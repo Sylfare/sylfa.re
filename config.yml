@@ -1,7 +1,8 @@
-baseURL: "https://examplesite.com/"
-title: ExampleSite
+baseURL: "https://sylfa.re"
+title: Sylfare
 paginate: 5
 theme: PaperMod
+enableGitInfo: true
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -12,12 +13,12 @@ minify:
   disableXML: true
   minifyOutput: true
 
-
 defaultContentLanguage: en
 languages:
   en:
     languageName: "English"
     weight: 1
+    # copyright: "© {{ now.Year }} **Last update:** "
     taxonomies:
       category: categories
       tag: tags
@@ -26,12 +27,16 @@ languages:
       enabled: true
       title: "Sylfare"
       subtitle: "I make things, sometimes"
-      
-      imageUrl: "/sylfare_portrait2.png"
-      
+      imageUrl: "/img/icon.png"
       imageWidth: 120
       imageHeight: 120
-      imageTitle: my image
+      imageTitle: Sylfare
+      
+      # buttons:
+      #   - name: Posts
+      #     url: posts
+      #   - name: Tags
+      #     url: tags
     
   fr:
     languageName: ":fr:"
@@ -41,19 +46,41 @@ languages:
       enabled: true
       title: "Sylfare"
       subtitle: "Je fais des trucs, des fois"
-      imageUrl: "/sylfare_portrait2.png"
+      imageUrl: "/img/icon.png"
       imageWidth: 120
       imageHeight: 120
-      imageTitle: my image
-      buttons:
-        - name: Posts
-          url: posts
-        - name: Tags
-          url: tags
+      imageTitle: Sylfare
+      # buttons:
+      #   - name: Posts
+      #     url: posts
+      #   - name: Tags
+      #     url: tags
     taxonomies:
-      category: FRcategories
-      tag: FRtags
-      series: FRseries
+      category: catégories
+      tag: Tags
+      series: series
+    socialIcons:
+      - name: twitter
+        title: "Twitter personnel"
+        url: "https://twitter.com/Sylfare76"
+      - name: twitter
+        title: "Twitter art"
+        url: "https://twitter.com/Sylfart"
+      - name: mastodon
+        url: "https://mastodon.social/web/@sylfare"
+      - name: github
+        url: "https://github.com/Sylfare"
+      - name: itchio
+        url: "https://sylfare.itch.io/"
+      - name: reddit
+        url: "https://www.reddit.com/user/Sylfare_"
+      - name: other
+        title: "RefSheet"
+        url: "https://refsheet.net/Sylfare"
+      - name: other
+        title: "Art Fight"
+        url: "https://artfight.net/~Sylfare"
+      
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: ExampleSite
@@ -85,7 +112,7 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "<link / abs url>"
+    favicon: "/img/icon.png"
     favicon16x16: "<link / abs url>"
     favicon32x32: "<link / abs url>"
     apple_touch_icon: "<link / abs url>"
@@ -101,7 +128,7 @@ params:
     enabled: true # needs to be explicitly set
     title: ExamplezSite
     subtitle: "This is subtitle"
-    imageUrl: "/sylfare_portrait2.png"
+    imageUrl: "/img/icon.png"
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
@@ -118,19 +145,25 @@ params:
 
   socialIcons:
     - name: twitter
-      url: "https://twitter.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
+      title: "Personal Twitter (mostly in French)"
+      url: "https://twitter.com/Sylfare76"
+    - name: twitter
+      title: "Art Twitter"
+      url: "https://twitter.com/Sylfart"
+    - name: mastodon
+      url: "https://mastodon.social/web/@sylfare"
     - name: github
-      url: "https://github.com/"
-
-  analytics:
-    google:
-      SiteVerificationTag: "XYZabc"
-    bing:
-      SiteVerificationTag: "XYZabc"
-    yandex:
-      SiteVerificationTag: "XYZabc"
+      url: "https://github.com/Sylfare"
+    - name: itchio
+      url: "https://sylfare.itch.io/"
+    - name: reddit
+      url: "https://www.reddit.com/user/Sylfare_"
+    - name: other
+      title: "RefSheet"
+      url: "https://refsheet.net/Sylfare"
+    - name: other
+      title: "Art Fight"
+      url: "https://artfight.net/~Sylfare"
 
   cover:
     hidden: true # hide everywhere but not in structured data
