@@ -83,10 +83,10 @@ languages:
       
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: ExampleSite
-  description: "ExampleSite description"
-  keywords: [Blog, Portfolio, PaperMod]
-  author: Me
+  title: Sylfare
+  description: "Something doing pixelart things, sometimes"
+  keywords: [Sylfare, pixelart, agender, aroace, "monster girl", oc]
+  author: Sylfare
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
@@ -126,7 +126,7 @@ params:
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: ExamplezSite
+    title: ExamplezSite 
     subtitle: "This is subtitle"
     imageUrl: "/img/icon.png"
     imageWidth: 120
@@ -195,10 +195,10 @@ menu:
       name: tags
       url: /tags/
       weight: 20
-    - identifier: example
-      name: example.org
-      url: https://example.org
-      weight: 30
+    # - identifier: example
+    #   name: example.org
+    #   url: https://example.org
+    #   weight: 30
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
