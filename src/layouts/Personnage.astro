@@ -1,0 +1,11 @@
+---
+import RetourPersos from "@components/RetourPersos.astro";
+import SousPage from "./SousPage.astro";
+
+const { title } = Astro.props;
+---
+
+<SousPage title={title}>
+    <slot />
+    <RetourPersos/>
+</SousPage>

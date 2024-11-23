@@ -1,7 +1,7 @@
 ---
 import '../css/style.css';
-import Footer from "../components/Footer.astro";
-import GlobalStyle from "../components/Style.astro";
+import Footer from "@components/Footer.astro";
+import GlobalStyle from "@components/Style.astro";
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ const { title } = Astro.props;
     <GlobalStyle />
   </head>
   <body>
-    <h1>{title}</h1>
+    {title && <h1 >{title}</h1>}
     <main>
         <slot />
     </main>

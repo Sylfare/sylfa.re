@@ -1,0 +1,12 @@
+---
+import RetourAccueil from "@components/RetourAccueil.astro";
+import Page from "./Page.astro";
+
+const { title } = Astro.props;
+---
+
+<Page title={ title }>
+    <slot />
+
+    <RetourAccueil />
+</Page>
