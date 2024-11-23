@@ -1,0 +1,7 @@
+# pourquoi Neocities veut upload .git ????
+.git 
+node_modules
+bun.lockb
+dist/
+.astro
+src/env.d.ts
