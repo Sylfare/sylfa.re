@@ -1,0 +1,24 @@
+---
+
+---
+<div id="theme-section">
+    <input type="checkbox" id="theme"/>
+    <select id="theme-list"></select>
+</div>
+
+<style>
+    #theme-section {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
+    #theme:checked + #theme-list {
+        display: block;
+    }
+    #theme-list {
+        display: none;
+    }
+</style>

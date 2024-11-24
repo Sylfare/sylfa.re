@@ -10,7 +10,8 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "less": "^4.2.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
