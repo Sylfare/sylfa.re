@@ -37,7 +37,10 @@
 
 
 body {
-  background-image: url("/img/bg_blanc.png");
+  /* background-image: url("/img/bg_blanc.png"); */
+  background-image: url("/img/bg2.png");
+  background-color: black;
+  color: white;
   font-family: 'Atkinson Hyperlegible', Verdana, sans-serif;
   font-size: 20px;
   padding: 0 20px;
@@ -67,4 +70,8 @@ h1 {
 
 .paillettes h1 {
   color: pink;
+}
+
+a:visited {
+  color: aqua;
 }
