@@ -1,10 +1,10 @@
 ---
-import ThemeSwitcher from "@components/ThemeSwitcher.astro";
+import ThemeRadios from "@components/ThemeRadios.astro";
 import BasePage from "@layouts/BasePage.astro";
 ---
 
 <BasePage>
-  <ThemeSwitcher />
+  <ThemeRadios />
   <div id="page">
     <button>a</button>
   </div>
@@ -17,7 +17,6 @@ import BasePage from "@layouts/BasePage.astro";
     padding: 0;
     height: 100vh;
     display: flex;
-    grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     flex-direction: column;
   }

@@ -1,12 +1,12 @@
 ---
 import Footer from "@components/Footer.astro";
-import ThemeSwitcher from '@components/ThemeSwitcher.astro';
+import ThemeRadios from '@components/ThemeRadios.astro';
 import BasePage from './BasePage.astro';
 
 const { title } = Astro.props;
 ---
 <BasePage>
-  <ThemeSwitcher />
+  <ThemeRadios />
   <div id="page">
     {title && <h1 >{title}</h1>}
     <main>
@@ -21,16 +21,12 @@ const { title } = Astro.props;
   :global(body) {
     margin: 0;
     padding: 0;
-    text-align: right;
-  }
-  #page {
-    top: 0;
-    left: 0;
-    text-align: left;
-  }
-  main {
     display: flex;
     flex-direction: column;
-    min-width: 50%;
+    height: 100vh;
+    flex-wrap: wrap;
+  }
+  #page{
+    flex: 1;
   }
 </style>
