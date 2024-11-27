@@ -1,10 +1,12 @@
 ---
+import Section from "@components/Section.astro";
 import Page from "@layouts/Page.astro";
 
 ---
 
 <Page title="Bienvenue sur le site de Sylfare !">
-  <p><img src="/img/construction.gif" alt="">SITE EN CONSTRUCTION</p>
+  <Section title="test">
+    <p><img src="/img/construction.gif" alt="">SITE EN CONSTRUCTION</p>
       <p>Retrouvez tout plein de trucs sur moi !
       <ul>
         <li>Qui suis-je ?</li>
@@ -13,4 +15,6 @@ import Page from "@layouts/Page.astro";
         <li><a href="genscools">Des gens cools à aller voir</a></li>
         <li>Liens et logiciels tout aussi cools</li>
       </ul>
+  </Section>
+  
 </Page>

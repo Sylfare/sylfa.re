@@ -1,8 +1,4 @@
 ---
-import '../css/style.css';
-import Footer from "@components/Footer.astro";
-import GlobalStyle from "@components/Style.astro";
-import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -11,7 +7,6 @@ const { title } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le site de Sylfare</title>
-    <GlobalStyle />
   </head>
   <body>
     <slot />

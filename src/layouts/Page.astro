@@ -2,13 +2,35 @@
 import Footer from "@components/Footer.astro";
 import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 import BasePage from './BasePage.astro';
+
 const { title } = Astro.props;
 ---
 <BasePage>
-  {title && <h1 >{title}</h1>}
+  <ThemeSwitcher />
+  <div id="page">
+    {title && <h1 >{title}</h1>}
     <main>
         <slot />
     </main>
     <Footer />
-    <ThemeSwitcher />
+  </div>
+  
 </BasePage>
+<style>
+  @import "@css/themes.less";
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }
+  #page {
+    top: 0;
+    left: 0;
+    text-align: left;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+  }
+</style>
