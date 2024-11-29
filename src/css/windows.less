@@ -1,3 +1,8 @@
-:global(#theme-98:not(:checked) ~ #page) .title-bar{
-    display: none;
+@windows: :where(@{theme-98});
+.title-bar {
+    display: none
+}
+
+@windows .title-bar {
+    display: block
 }
