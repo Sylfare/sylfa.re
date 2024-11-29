@@ -1,11 +1,5 @@
 ---
-const { slug, checked } = Astro.props;
+const { slug, name, checked } = Astro.props;
 ---
 <input type="radio" id={"theme-"+slug} name="theme" checked={checked || null}>
-
-<style lang="less">
-    input[type="radio"]{
-        display: none;
-        visibility: collapse;
-    }
-</style>
+<label for={"theme-"+slug}>{name}</label>

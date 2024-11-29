@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     vite:{
         build:{
-            assetsInlineLimit: 1024,
+            assetsInlineLimit: 1024
         },
     },
     scopedStyleStrategy: "where",
