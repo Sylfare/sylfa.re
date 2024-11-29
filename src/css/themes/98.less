@@ -1,5 +1,6 @@
 @theme-98: :root:has(#theme-98:checked);
 @not-theme-98: :root:has(:not(#theme-98:checked));
+@svg-data: 'image/svg+xml;charset=UTF-8';
 
 @font-face {
   font-family: "Pixelated MS Sans Serif";
@@ -273,35 +274,35 @@
       
       .title-bar-controls button[aria-label="Minimize"],
       .title-bar-controls button[aria-label].minimize {
-        background-image: svg-load("./icon/minimize.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/minimize.svg");
         background-repeat: no-repeat;
         background-position: bottom 3px left 4px;
       }
       
       .title-bar-controls button[aria-label="Maximize"],
       .title-bar-controls button[aria-label].maximize {
-        background-image: svg-load("./icon/maximize.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/maximize.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 3px;
       }
       
       .title-bar-controls button[aria-label="Maximize"]:disabled,
       .title-bar-controls button[aria-label].maximize:disabled {
-        background-image: svg-load("./icon/maximize-disabled.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/maximize-disabled.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 3px;
       }
       
       .title-bar-controls button[aria-label="Restore"],
       .title-bar-controls button[aria-label].restore {
-        background-image: svg-load("./icon/restore.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/restore.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 3px;
       }
       
       .title-bar-controls button[aria-label="Help"],
       .title-bar-controls button[aria-label].help {
-        background-image: svg-load("./icon/help.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/help.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 5px;
       }
@@ -309,7 +310,7 @@
       .title-bar-controls button[aria-label="Close"],
       .title-bar-controls button[aria-label].close {
         margin-left: 2px;
-        background-image: svg-load("./icon/close.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/close.svg");
         background-repeat: no-repeat;
         background-position: top 3px left 4px;
       }
@@ -332,7 +333,7 @@
       }
       
       fieldset {
-        border-image: svg-load("./icon/groupbox-border.svg") 2;
+        border-image: data-uri(@svg-data, "/themes/98/icon/groupbox-border.svg") 2;
         padding: calc(2 * var(--border-width) + var(--element-spacing));
         padding-block-start: var(--element-spacing);
         margin: 0;
@@ -400,11 +401,11 @@
         width: var(--radio-width);
         height: var(--radio-width);
         margin-right: var(--radio-label-spacing);
-        background: svg-load("./icon/radio-border.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/radio-border.svg");
       }
       
       input[type="radio"]:active + label::before {
-        background: svg-load("./icon/radio-border-disabled.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/radio-border-disabled.svg");
       }
       
       input[type="radio"]:checked + label::after {
@@ -415,7 +416,7 @@
         top: var(--radio-dot-top);
         left: var(--radio-dot-left);
         position: absolute;
-        background: svg-load("./icon/radio-dot.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/radio-dot.svg");
       }
       
       input[type="radio"]:focus + label,
@@ -424,11 +425,11 @@
       }
       
       input[type="radio"][disabled] + label::before {
-        background: svg-load("./icon/radio-border-disabled.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/radio-border-disabled.svg");
       }
       
       input[type="radio"][disabled]:checked + label::after {
-        background: svg-load("./icon/radio-dot-disabled.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/radio-dot-disabled.svg");
       }
       
       input[type="checkbox"] + label {
@@ -461,7 +462,7 @@
         left: calc(
           -1 * (var(--checkbox-total-width-precalc)) + var(--checkmark-left)
         );
-        background: svg-load("./icon/checkmark.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/checkmark.svg");
       }
       
       input[type="checkbox"][disabled] + label::before {
@@ -469,7 +470,7 @@
       }
       
       input[type="checkbox"][disabled]:checked + label::after {
-        background: svg-load("./icon/checkmark-disabled.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/checkmark-disabled.svg");
       }
       
       input[type="text"],
@@ -544,7 +545,7 @@
         -moz-appearance: none;
         position: relative;
         padding-right: 32px;
-        background-image: svg-load("./icon/button-down.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/button-down.svg");
         background-position: top 2px right 2px;
         background-repeat: no-repeat;
         border-radius: 0;
@@ -575,14 +576,14 @@
         -webkit-appearance: none;
         height: 21px;
         width: 11px;
-        background: svg-load("./icon/indicator-horizontal.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/indicator-horizontal.svg");
         transform: translateY(-8px);
         box-shadow: none;
         border: none;
       }
       
       input[type="range"].has-box-indicator::-webkit-slider-thumb {
-        background: svg-load("./icon/indicator-rectangle-horizontal.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/indicator-rectangle-horizontal.svg");
         transform: translateY(-10px);
       }
       
@@ -591,12 +592,12 @@
         width: 11px;
         border: 0;
         border-radius: 0;
-        background: svg-load("./icon/indicator-horizontal.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/indicator-horizontal.svg");
         transform: translateY(2px);
       }
       
       input[type="range"].has-box-indicator::-moz-range-thumb {
-        background: svg-load("./icon/indicator-rectangle-horizontal.svg");
+        background: data-uri(@svg-data, "/themes/98/icon/indicator-rectangle-horizontal.svg");
         transform: translateY(0px);
       }
       
@@ -680,7 +681,7 @@
       }
       
       select:active {
-        background-image: svg-load("./icon/button-down-active.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/button-down-active.svg");
       }
       
       a {
@@ -816,7 +817,7 @@
       }
       
       ::-webkit-scrollbar-track {
-        background-image: svg-load("./icon/scrollbar-background.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/scrollbar-background.svg");
       }
       
       ::-webkit-scrollbar-thumb {
@@ -833,19 +834,19 @@
       
       ::-webkit-scrollbar-button:vertical:start {
         height: 17px;
-        background-image: svg-load("./icon/button-up.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/button-up.svg");
       }
       ::-webkit-scrollbar-button:vertical:end {
         height: 17px;
-        background-image: svg-load("./icon/button-down.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/button-down.svg");
       }
       ::-webkit-scrollbar-button:horizontal:start {
         width: 16px;
-        background-image: svg-load("./icon/button-left.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/button-left.svg");
       }
       ::-webkit-scrollbar-button:horizontal:end {
         width: 16px;
-        background-image: svg-load("./icon/button-right.svg");
+        background-image: data-uri(@svg-data, "/themes/98/icon/button-right.svg");
       }
       
       .window[role=tabpanel] {
@@ -898,7 +899,7 @@
       .sunken-panel {
         box-sizing: border-box;
         border: 2px groove transparent;
-        border-image: svg-load("./icon/sunken-panel-border.svg") 2;
+        border-image: data-uri(@svg-data, "/themes/98/icon/sunken-panel-border.svg") 2;
         overflow: auto;
         background-color: #fff;
       }

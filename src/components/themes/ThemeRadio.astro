@@ -1,5 +1,8 @@
 ---
 const { slug, name, checked } = Astro.props;
 ---
-<input type="radio" id={"theme-"+slug} name="theme" checked={checked || null}>
-<label for={"theme-"+slug}>{name}</label>
+<div id="field-row">
+    <input type="radio" id={"theme-"+slug} name="theme" checked={checked || null}>
+    <label for={"theme-"+slug}>{name}</label>
+</div>
+
