@@ -1,1 +1,6 @@
-<p><a href="/personnages"><img src="/img/personnages.gif" alt=""> Retour à la liste des personnages</a></p>
+---
+import { Image } from "astro:assets";
+import personnages from "@img/personnages.gif";
+---
+
+<p><a href="/personnages"><Image src={personnages} alt="" /> Retour à la liste des personnages</a></p>

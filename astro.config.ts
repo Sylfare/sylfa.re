@@ -7,10 +7,14 @@ export default defineConfig({
   vite: {
     build: {
       sourcemap: true,
+
     },
     css: {
       devSourcemap: true,
     },
+  },
+  build: {
+    assets: "assets",
   },
 
   scopedStyleStrategy: "where",

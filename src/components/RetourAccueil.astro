@@ -1,4 +1,5 @@
 ---
-
+import { Image } from "astro:assets";
+import home from "@img/home.gif";
 ---
-<p><a href="/"><img src="/img/home.gif" alt="Accueil"> Retour à l'accueil</a></p>
+<p><a href="/"><Image src={home} alt="Accueil" /> Retour à l'accueil</a></p>

@@ -1,10 +1,18 @@
 ---
+import { Image } from "astro:assets";
+import validW3C from "@banners/valid-html5.gif";
+import neoCities from "@banners/n.gif";
+import inclusivePride from "@banners/inclusive_pride.gif";
+import agender from "@banners/agender.gif";
+import asexual from "@banners/asexual.gif";
+
+
 ---
 
 <footer>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><img src="/img/banners/valid-html5.gif" alt="Validé par le W3C"></a>
-    <a href="https://neocities.org/" target="_blank"><img src="/img/banners/n.gif" alt="NeoCities"></a>
-    <img src="/img/banners/inclusive_pride.gif" alt="drapeau progressif des fiertés">
-    <img src="/img/banners/agender.gif" alt="Drapeau agenre - gender? no thx (genre ? non merci)">
-    <img src="/img/banners/asexual.gif" alt="Drapeau asexuel - make laugh not war (faites l'humour pas la guerre)">
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><Image src={validW3C} alt="Validé par le W3C" /></a>
+    <a href="https://neocities.org/" target="_blank"><Image src={neoCities} alt="NeoCities" /></a>
+    <Image src={inclusivePride} alt="drapeau progressif des fiertés" />
+    <Image src={agender} alt="Drapeau agenre - gender? no thx (genre ? non merci)" />
+    <Image src={asexual} alt="Drapeau asexuel - make laugh not war (faites l'humour pas la guerre)" />
 </footer>
