@@ -1,14 +1,22 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+
+import compressor from "astro-compressor";
 
 // https://astro.build/config
 export default defineConfig({
-    vite:{
-        build:{
-            assetsInlineLimit: 1024
-        },
+  vite: {
+    build: {
+      sourcemap: true,
     },
-    scopedStyleStrategy: "where",
-    experimental: {
-        contentIntellisense: true
-    }
+    css: {
+      devSourcemap: true,
+    },
+  },
+
+  scopedStyleStrategy: "where",
+
+  experimental: {
+    contentIntellisense: true,
+  },
+  integrations: [compressor()],
 });

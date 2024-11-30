@@ -1,7 +1,6 @@
 ---
 import Footer from "@components/Footer.astro";
 import BasePage from './BasePage.astro';
-import ThemeShow from "@components/themes/ThemeShow.astro";
 import ThemeConfig from "./ThemeConfig.astro";
 import '@css/themes.less';
 
@@ -14,5 +13,4 @@ const { title } = Astro.props;
       <slot />
   </main>
   <Footer />
-  <ThemeShow />
 </BasePage>
