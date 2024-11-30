@@ -19,6 +19,10 @@ import TitleBar from "@components/TitleBar.astro";
 
 <style lang="less">
 @import (reference) "@css/themes.less";
+  #theme-toggle {
+    display: none;
+  }
+
   #config-container {
     display: none;
     flex-direction: column;
@@ -36,7 +40,10 @@ import TitleBar from "@components/TitleBar.astro";
     align-self: flex-end;
     right: 10px;
     top: 10px;
-    &:extend(#w98 button all);
+    @{theme-98} & {
+      &:extend(#w98 button all);
+    }
+    
     body:has(#theme-toggle:checked) & {
       display: none;
     }
@@ -47,6 +54,11 @@ import TitleBar from "@components/TitleBar.astro";
     align-self: flex-end;
     right: 10px;
     bottom: 10px;
-    &:extend(#w98 button all);
+
+    @{theme-98} & {
+      &:extend(#w98 button all);
+    }
   }
+
+  
 </style>
