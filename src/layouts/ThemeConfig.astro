@@ -1,35 +1,52 @@
 ---
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
+import TitleBar from "@components/TitleBar.astro";
 ---
 
-<div id="config-container">
-  <div id="config">
+<div id="config-container" class="window">
+  <input type="checkbox" id="theme-toggle" />
+  <TitleBar title="Configuration"/>
+  <div id="config" class="window-body">
     <fieldset>
       <legend>Thème</legend>
       <ThemeRadios />
     </fieldset>
   </div>
-  <input type="checkbox" id="theme-show" />
-  <label for="theme-show">Paramètres</label>
+  
+  <label for="theme-toggle" id="theme-hide">Fermer</label>
 </div>
+<label for="theme-toggle" id="theme-show">Paramètres</label>
 
 <style lang="less">
 @import (reference) "@css/themes.less";
   #config-container {
-    display: flex;
-    flex-direction: column;
-  }
-  #config {
     display: none;
+    flex-direction: column;
+    &:has(#theme-toggle:checked) {
+      display: flex;
+    }
   }
-  body:has(#theme-show:checked) #config {
+  body:has(#theme-toggle:checked) #config {
     display: flex;
   }
+
+
   #theme-show {
     position: absolute;
     align-self: flex-end;
     right: 10px;
     top: 10px;
+    &:extend(#w98 button all);
+    body:has(#theme-toggle:checked) & {
+      display: none;
+    }
+  }
 
+  #theme-hide {
+    
+    align-self: flex-end;
+    right: 10px;
+    bottom: 10px;
+    &:extend(#w98 button all);
   }
 </style>
