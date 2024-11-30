@@ -1,4 +1,34 @@
 ---
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
 ---
-<div id="config"><ThemeRadios /></div>
+
+<div id="config-container">
+  <div id="config">
+    <fieldset>
+      <legend>Thème</legend>
+      <ThemeRadios />
+    </fieldset>
+  </div>
+  <input type="checkbox" id="theme-show" />
+</div>
+
+<style lang="less">
+@import (reference) "@css/themes.less";
+  #config-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #config {
+    display: none;
+  }
+  body:has(#theme-show:checked) #config {
+    display: flex;
+  }
+  #theme-show {
+    position: absolute;
+    align-self: flex-end;
+    right: 10px;
+    top: 10px;
+
+  }
+</style>
