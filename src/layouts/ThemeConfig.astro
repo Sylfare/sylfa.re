@@ -69,7 +69,7 @@ import TitleBar from "@components/TitleBar.astro";
   const theme = localStorage.getItem('theme');
   if(theme) {
     const radio = document.getElementById('theme-'+theme);
-    document.body.classList.add('body-'+ theme );
+    document.documentElement.dataset.theme = theme;
     if(radio) {
       radio.checked = true;
     }
