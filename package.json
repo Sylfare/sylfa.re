@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "static": "http-server ./dist -bg",
-    "bs": "bun run build && bun static"
+    "bs": "bun run build && bun static",
+    "neocities": "bun run build && neocities push ./dist"
   },
   "devDependencies": {
     "@types/bun": "latest",
