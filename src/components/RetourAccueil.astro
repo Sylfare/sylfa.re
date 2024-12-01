@@ -3,3 +3,13 @@ import { Image } from "astro:assets";
 import home from "@img/home.gif";
 ---
 <p><a href="/"><Image src={home} alt="Accueil" /> Retour à l'accueil</a></p>
+<style lang="less">
+    @import (reference) "@css/themes.less";
+    @{theme-98} {
+        a {
+            /** */
+            display: inline-block;
+            &:extend(#theme-98 button);
+        }
+    }
+</style>
