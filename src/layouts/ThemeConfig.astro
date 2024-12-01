@@ -74,4 +74,7 @@ import TitleBar from "@components/TitleBar.astro";
       radio.checked = true;
     }
   }
- </script>
+</script>
+<script>
+  document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", function(e){ document.getElementById("theme-toggle").checked = false } );
+</script>

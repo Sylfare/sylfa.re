@@ -30,3 +30,9 @@ import TitleBar from "@components/TitleBar.astro";
   }
   
 </style>
+<script>
+  document.querySelectorAll('main button[aria-label="Close"]')
+  .forEach(i => {i.addEventListener("click", function(e){e.target.parentElement.parentElement.parentElement.remove(); } )})
+  document.querySelectorAll('main button[aria-label="Maximize"]')
+  .forEach(i => {i.addEventListener("click", function(e){e.target.parentElement.parentElement.parentElement.classList.toggle("window-maximized"); } )})
+</script>

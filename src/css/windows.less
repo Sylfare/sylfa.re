@@ -3,3 +3,21 @@
  .title-bar {
     display: none
 }
+
+.window-maximized {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 4px) !important;
+    height: 100vh;
+    margin: 0 !important;
+    z-index: 100;
+    .window-body {
+        overflow: scroll;
+        max-height: calc(100vh - 22px);
+    }
+
+    body:has(&) {
+        overflow: hidden;
+    }
+}
