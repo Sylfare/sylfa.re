@@ -10,5 +10,5 @@ if(themesList.length > 0) {
     }
 } 
 ---
-{firstSlug && <ThemeRadio slug={firstSlug} name={firstName} checked/>}
+{firstSlug && <ThemeRadio slug={firstSlug} name={firstName} checked="true"/>}
 {themesList.map(([slug, themeName]) => <ThemeRadio slug={slug} name={themeName}/>)}

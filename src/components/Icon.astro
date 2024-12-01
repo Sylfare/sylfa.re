@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+
+interface Icon {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+}
+
+interface Props {
+    type: string;
+}
+const { type } = Astro.props;
+const icons = {
+    "warning": {src: "/themes/98/icon/warning.svg", alt: "Attention", width: 16, height: 16}
+}
+const currentIcon = icons[type];
+---
+<img {...currentIcon} />

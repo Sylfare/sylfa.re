@@ -1,4 +1,5 @@
 ---
+import Icon from "@components/Icon.astro";
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
 ---
@@ -7,11 +8,12 @@ import TitleBar from "@components/TitleBar.astro";
   <input type="checkbox" id="theme-toggle" />
   <TitleBar title="Configuration"/>
   <div id="config" class="window-body">
-    <fieldset>
+    <fieldset id="config-theme">
       <legend>Thème</legend>
       <ThemeRadios />
     </fieldset>
   </div>
+  <noscript><Icon type="warning"/> JS désactivé, le thème ne sera pas sauvegardé</noscript>
   
   <label for="theme-toggle" id="theme-hide">Fermer</label>
 </div>
@@ -41,7 +43,7 @@ import TitleBar from "@components/TitleBar.astro";
     right: 10px;
     top: 10px;
     @{theme-98} & {
-      &:extend(#w98 button all);
+      &:extend(#theme-98 button all);
     }
     
     body:has(#theme-toggle:checked) & {
@@ -56,9 +58,20 @@ import TitleBar from "@components/TitleBar.astro";
     bottom: 10px;
 
     @{theme-98} & {
-      &:extend(#w98 button all);
+      &:extend(#theme-98 button all);
+    }
+  }  
+</style>
+
+
+<script is:inline>
+  // charger le thème si défini
+  const theme = localStorage.getItem('theme');
+  if(theme) {
+    const radio = document.getElementById('theme-'+theme);
+    document.body.classList.add('body-'+ theme );
+    if(radio) {
+      radio.checked = true;
     }
   }
-
-  
-</style>
+ </script>
