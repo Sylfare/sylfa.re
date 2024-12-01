@@ -1,6 +1,4 @@
 ---
-import Test from "@components/Test.astro";
-
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -15,5 +13,10 @@ const { title } = Astro.props;
   </body>
 </html>
 <style lang="less" is:global>
-  @import "@css/themes.less";
+  @import (reference) "@css/themes.less";
+  @{theme-98} {    
+    footer {
+      text-align: center;
+    }
+  }
 </style>

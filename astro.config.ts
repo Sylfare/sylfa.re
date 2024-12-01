@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 
 import compressor from "astro-compressor";
 
@@ -16,7 +16,9 @@ export default defineConfig({
   build: {
     assets: "assets",
   },
-
+  image: {
+    service: passthroughImageService()  
+  },
   scopedStyleStrategy: "where",
 
   experimental: {

@@ -18,6 +18,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'W95font';
+  src: url('/fonts/w95font.woff2') format('woff2'),
+       url('/fonts/w95font.woff2') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'W95font';
+  src: url('/fonts/w95font-bold.woff2') format('woff2'),
+       url('/fonts/w95font-bold.woff2') format('woff');
+  font-weight: bold;
+
+}
+
 @{theme-98}, #w98 {
     & {
         /* Color */
@@ -117,13 +132,14 @@
       .window,
       .title-bar,
       li[role=tab] {
-        font-family: "Pixelated MS Sans Serif", Arial;
+        font-family: "W95font", Arial;
         -webkit-font-smoothing: none;
-        font-size: 11px;
+        font-size: 16px;
       }
       
       h1 {
         font-size: 5rem;
+        color: var(--text-color);
       }
       
       h2 {

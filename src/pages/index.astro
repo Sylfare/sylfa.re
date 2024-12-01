@@ -5,12 +5,13 @@ import Section from "@components/Section.astro";
 import Page from "@layouts/Page.astro";
 import question from "@img/question.gif";
 import personnages from "@img/personnages.gif";
+import construction from "@img/construction.gif";
 
 ---
 
 <Page title="Bienvenue sur le site de Sylfare !">
-  <Section title="test">
-    <p><img src="/img/construction.gif" alt="">SITE EN CONSTRUCTION</p>
+  <Section>
+    <p><Image src={construction} alt="" />SITE EN CONSTRUCTION</p>
       <p>Retrouvez tout plein de trucs sur moi !
       <ul>
         <li>Qui suis-je ?</li>

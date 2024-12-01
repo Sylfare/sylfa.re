@@ -4,9 +4,27 @@ import TitleBar from "@components/TitleBar.astro";
 ---
 
 <div class="window">
-  <TitleBar title="test coucou" maximize minimize/>
+  <TitleBar title={title} maximize minimize/>
   <div class="window-body">
+    { title && <h2>{title}</h2>}
     <slot />
   </div>
 </div>
-<style is:global></style>
+<style lang="less">
+  @import (reference) "@css/themes.less";
+
+  @{theme-98} {
+    
+
+    @media (min-width: 960px) {
+      .window {
+        width: 50%;
+        margin: 32px auto;
+      }
+    }
+    .window-body h2 {
+      display: none;
+    }
+  }
+  
+</style>
