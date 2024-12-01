@@ -1,0 +1,14 @@
+---
+import ThemeRadio from "@components/themes/ThemeRadio.astro";
+import themes from "@css/themes/themes.json"
+let themesList = Object.entries(themes);
+let firstSlug, firstName;
+if(themesList.length > 0) {
+    let first = themesList.pop();
+    if(first) {
+        [firstSlug, firstName] = first;
+    }
+} 
+---
+{firstSlug && <ThemeRadio slug={firstSlug} name={firstName} checked="true"/>}
+{themesList.map(([slug, themeName]) => <ThemeRadio slug={slug} name={themeName}/>)}

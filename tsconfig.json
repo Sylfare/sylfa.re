@@ -26,6 +26,9 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
+      "@css/*": ["./src/css/*"],
+      "@img/*": ["./src/img/*"],
+      "@banners/*": ["./src/img/banners/*"]
     },
     "baseUrl": "./"
     

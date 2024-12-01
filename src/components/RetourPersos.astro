@@ -1,1 +1,16 @@
-<p><a href="/personnages"><img src="/img/personnages.gif" alt=""> Retour à la liste des personnages</a></p>
+---
+import { Image } from "astro:assets";
+import personnages from "@img/personnages.gif";
+---
+
+<p><a href="/personnages"><Image src={personnages} alt="" /> Retour à la liste des personnages</a></p>
+<style lang="less">
+    @import (reference) "@css/themes.less";
+    @{theme-98} {
+        a {
+            /** */
+            display: inline-block;
+            &:extend(#theme-98 button);
+        }
+    }
+</style>

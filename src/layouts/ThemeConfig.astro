@@ -1,0 +1,77 @@
+---
+import Icon from "@components/Icon.astro";
+import ThemeRadios from "@components/themes/ThemeRadios.astro";
+import TitleBar from "@components/TitleBar.astro";
+---
+
+<div id="config-container" class="window">
+  <input type="checkbox" id="theme-toggle" />
+  <TitleBar title="Configuration"/>
+  <div id="config" class="window-body">
+    <fieldset id="config-theme">
+      <legend>Thème</legend>
+      <ThemeRadios />
+    </fieldset>
+  </div>
+  <noscript><Icon type="warning"/> JS désactivé, le thème ne sera pas sauvegardé</noscript>
+  
+  <label for="theme-toggle" id="theme-hide">Fermer</label>
+</div>
+<label for="theme-toggle" id="theme-show">Paramètres</label>
+
+<style lang="less">
+@import (reference) "@css/themes.less";
+  #theme-toggle {
+    display: none;
+  }
+
+  #config-container {
+    display: none;
+    flex-direction: column;
+    &:has(#theme-toggle:checked) {
+      display: flex;
+    }
+  }
+  body:has(#theme-toggle:checked) #config {
+    display: flex;
+  }
+
+
+  #theme-show {
+    position: absolute;
+    align-self: flex-end;
+    right: 10px;
+    top: 10px;
+    @{theme-98} & {
+      &:extend(#theme-98 button all);
+    }
+    
+    body:has(#theme-toggle:checked) & {
+      display: none;
+    }
+  }
+
+  #theme-hide {
+    
+    align-self: flex-end;
+    right: 10px;
+    bottom: 10px;
+
+    @{theme-98} & {
+      &:extend(#theme-98 button all);
+    }
+  }  
+</style>
+
+
+<script is:inline>
+  // charger le thème si défini
+  const theme = localStorage.getItem('theme');
+  if(theme) {
+    const radio = document.getElementById('theme-'+theme);
+    document.documentElement.dataset.theme = theme;
+    if(radio) {
+      radio.checked = true;
+    }
+  }
+ </script>

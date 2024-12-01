@@ -1,8 +1,11 @@
 ---
 import SousPage from "@layouts/SousPage.astro";
-
+import Image from "astro/components/Image.astro";
+import Section from "@components/Section.astro";
+import laugh from "@img/emotes/laugh3.gif";
 
 ---
 <SousPage>
-    <p>c'est feur. <img src="/img/emotes/laugh3.gif" alt="Smiley qui rigole au sol"></p>
+    <Section><p>c'est feur. <Image src={laugh} alt="Smiley qui rigole au sol" /></p></Section>
+    
 </SousPage>

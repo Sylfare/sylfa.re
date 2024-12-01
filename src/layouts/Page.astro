@@ -1,23 +1,22 @@
 ---
-import '../css/style.css';
 import Footer from "@components/Footer.astro";
-import GlobalStyle from "@components/Style.astro";
+import BasePage from './BasePage.astro';
+import ThemeConfig from "./ThemeConfig.astro";
+import '@css/themes.less';
+
 const { title } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le site de Sylfare</title>
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-    <GlobalStyle />
-  </head>
-  <body>
-    {title && <h1 >{title}</h1>}
-    <main>
-        <slot />
-    </main>
-    <Footer />
-  </body>
-</html>
+<BasePage>
+  <ThemeConfig />
+  {title && <h1 >{title}</h1>}
+  <main>
+      <slot />
+  </main>
+  <Footer />
+</BasePage>
+<style lang="less">
+  @import (reference) "@css/themes.less";
+  @{theme-98} main p {
+    color: white;
+  }
+</style>
