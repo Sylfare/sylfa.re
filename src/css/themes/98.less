@@ -326,7 +326,8 @@
       }
       
       .title-bar-controls button[aria-label="Restore"],
-      .title-bar-controls button[aria-label].restore {
+      .title-bar-controls button[aria-label].restore,
+      .window-maximized .title-bar-controls button[aria-label="Maximize"] {
         background-image: data-uri(@svg-data, "/themes/98/icon/restore.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 3px;
