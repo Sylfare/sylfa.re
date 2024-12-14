@@ -1,0 +1,14 @@
+---
+const { href } = Astro.props;
+---
+<p><a {href}><slot /></a>
+
+<style lang="less">
+    @import (reference) "@css/themes.less";
+    @{theme-98} {
+        a {
+            display: inline-block;
+            &:extend(#theme-98 button);
+        }
+    }
+</style>
