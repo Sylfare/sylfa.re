@@ -14,8 +14,12 @@
   },
   "devDependencies": {
     "@types/bun": "^1.1.14",
+    "@types/markdown-it": "^14.1.2",
+    "@types/sanitize-html": "^2.13.0",
     "http-server": "^14.1.1",
-    "less": "^4.2.1"
+    "less": "^4.2.1",
+    "markdown-it": "^14.1.0",
+    "sanitize-html": "^2.13.1"
   },
   "peerDependencies": {
     "typescript": "^5.7.2"

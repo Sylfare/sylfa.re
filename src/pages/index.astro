@@ -6,19 +6,19 @@ import Page from "@layouts/Page.astro";
 import question from "@img/question.gif";
 import personnages from "@img/personnages.gif";
 import construction from "@img/construction.gif";
+import Navigation from "@components/Navigation.astro";
 
 ---
 
-<Page title="Bienvenue sur le site de Sylfare !">
-  <Section>
-    
-      <p>Retrouvez tout plein de trucs sur moi !</p>
-      <ul>
-        <li><a href="cestquoi"><Image src={question} alt="" /> C'est quoi ?</a></li>
-        <li><a href="personnages"><Image src={personnages} alt="" /> Mes personnages</a></li>
-        <li><a href="genscools">Des gens cools à aller voir</a></li>
-        <li><a href="remerciements">Les remerciements</a></li>
-        <li><a href="changelog">La liste des changements (changelog)</a></li>
+<Page title="Bienve&shy;nue sur le site de Sylfare !">
+  <Section>    
+      <p>Retrouvez tout plein de trucs sur moi !</p>      
+      <ul class="nav">
+        <li><Navigation href="cestquoi" image={question} imageAlt="">C'est quoi ?</Navigation></li>
+        <li><Navigation href="personnages" image={personnages} imageAlt="">Mes personnages</Navigation></li>
+        <li><Navigation href="genscools">Des gens cools à aller voir</Navigation></li>
+        <li><Navigation href="remerciements">Les remerciements</Navigation></li>
+        <li><Navigation href="changelog">La liste des changements (changelog)</Navigation></li>
       </ul>
   </Section>
 
@@ -35,3 +35,24 @@ import construction from "@img/construction.gif";
   </Section>
   
 </Page>
+
+<style lang="less">
+  @import (reference) "@css/themes.less";
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
+
+  @{theme-98} {
+    .nav {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+
+    .nav li {
+      list-style: none;
+      display: flex;
+    }
+  }
+</style>

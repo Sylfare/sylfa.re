@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import home from "@img/home.gif";
 import Navigation from "./Navigation.astro";
 ---
 
-<Navigation href="/"><Image src={home} alt="Accueil" /> Retour à l'accueil</Navigation>
+<Navigation href="/" image={home} imageAlt="">Retour à l'accueil</Navigation>

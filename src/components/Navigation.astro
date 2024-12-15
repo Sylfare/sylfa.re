@@ -1,14 +1,22 @@
 ---
-const { href } = Astro.props;
+import { Image } from "astro:assets";
+
+const { href, image, imageAlt } = Astro.props;
 ---
-<p><a {href}><slot /></a>
+<a {href}>{ image && <Image src={image} alt={imageAlt} />}{image && " "}<slot /></a>
 
 <style lang="less">
     @import (reference) "@css/themes.less";
+
     @{theme-98} {
         a {
-            display: inline-block;
+            display: inline-flex;
+            flex-basis: 100px;
+            flex: 1;
+            align-items: center;
             &:extend(#theme-98 button);
+            height: 64px;
+            margin: .5rem;
         }
     }
 </style>
