@@ -1,0 +1,28 @@
+---
+import { render } from "astro:content";
+import { type Changelog } from "../content.config";
+import type { CollectionEntry } from "astro:content";
+import Section from "./Section.astro";
+type Props = {
+    changelog: CollectionEntry<'changelog'>,
+};
+const { changelog } = Astro.props;
+const date = changelog.data;
+
+function pad(str: string | number, length: number, character: string) {
+    return str.toString().padStart(length, character);
+}
+
+function formatDate(date: Date): string {
+    return ` (${[date.getDate(), date.getMonth()+1, date.getFullYear()].filter(n => typeof n !== "undefined").map(n => pad(n, 2, '0')).join('/')})`;
+}
+
+const { Content } = await render(changelog);
+---
+
+<Section title={`${changelog.data.version} ${changelog.data.name ? " - " + changelog.data.name : ""} ${changelog.data.date && formatDate(changelog.data.date)}`} slug={changelog.data.version}>
+   <Content /> 
+</Section>
+
+
+

@@ -1,0 +1,22 @@
+---
+import type { GetStaticPaths } from "astro";
+import SousPage from "@layouts/SousPage.astro";
+import ChangelogLog from "@components/Changelog.astro";
+import { getCollection } from "astro:content";
+import Navigation from "@components/Navigation.astro";
+
+export const getStaticPaths = (async (paginate) => {
+    const changelogListUnsorted = await getCollection('changelog');
+    const changelogList = changelogListUnsorted.sort((a, b) => b.data.order - a.data.order);
+    return paginate.paginate(changelogList, {pageSize: 10});
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+<SousPage title={`Changelog${(page.currentPage > 1) ? " - page " + page.currentPage : ""}`}>
+    { page.data.map(log => <ChangelogLog changelog={log}/>) }
+
+    { page.url.prev && <Navigation href={page.url.prev}>Page précédente</Navigation>}
+    { page.url.next && <Navigation href={page.url.next}>Page suivante</Navigation>}
+</SousPage>
+
