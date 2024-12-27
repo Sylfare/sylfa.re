@@ -1,5 +1,5 @@
-@theme-98: :root:has(#theme-98:checked);
-@not-theme-98: :root:has(:not(#theme-98:checked));
+@theme-98: html.theme-98;
+@not-theme-98: html:not(.theme-98);
 @svg-data: 'image/svg+xml;charset=UTF-8';
 
 @font-face {
@@ -33,7 +33,7 @@
 
 }
 
-@{theme-98}, :root[data-theme="98"], #theme-98 {
+html.theme-98 {
     & {
         /* Color */
         --text-color: #222222;

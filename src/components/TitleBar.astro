@@ -1,12 +1,15 @@
 ---
+import JsOnly from "@layouts/JsOnly.astro";
+
 const { title,  minimize = false, maximize = false} = Astro.props;
 ---
-
-<div class="title-bar">
-    <div class="title-bar-text">{title}</div>
-    <div class="title-bar-controls">
-      { minimize && <button aria-label="Minimize"></button> }
-      { maximize && <button aria-label="Maximize"></button> }
-      <button aria-label="Close"></button>
-    </div>
-</div>
+<JsOnly>
+  <div class="title-bar">
+      <div class="title-bar-text">{title}</div>
+        <div class="title-bar-controls">
+          { minimize && <button aria-label="Minimize"></button> }
+          { maximize && <button aria-label="Maximize"></button> }
+          <button aria-label="Close"></button>
+        </div>
+  </div>
+</JsOnly>

@@ -1,0 +1,16 @@
+---
+let content = '';
+if(Astro.slots.has('default')) {
+    content = await Astro.slots.render('default');
+    content = '<script lang="text/html">' + content + '</script>';
+}
+---
+<Fragment set:html={content}></Fragment>
+<script>
+    document.addEventListener("DOMContentLoaded", function(e) {
+        document.querySelectorAll('script[lang="text/html"]').forEach(node => 
+            // bien fermer les balises sinon ça casse tout
+            node.outerHTML = node.innerHTML.replaceAll(/<input([^>]+)>/g, "<input$1 />")
+        );
+    });    
+</script>

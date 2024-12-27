@@ -2,17 +2,8 @@
 const { slug, name, checked } = Astro.props;
 ---
 <div id="field-row">
-    <input type="radio" id={"theme-"+slug} name="theme" data-theme={slug} {checked}>
+    <input type="radio" id={"theme-"+slug} name="theme" data-theme={slug} {checked} />
     <label for={"theme-"+slug}>{name}</label>
 </div>
-<script>
-    function saveTheme(name: string): void {
-        localStorage.setItem("theme", name);
-        document.documentElement.dataset.theme = name;
-    }
-    document.querySelectorAll('#config-theme input[type="radio"]').forEach(i => i.addEventListener("change", (e) => {
-        saveTheme(e.target.dataset.theme)
-    }
-    ));
-</script>
+
 

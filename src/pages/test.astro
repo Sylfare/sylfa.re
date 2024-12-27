@@ -1,0 +1,19 @@
+---
+import RetourAccueil from "@components/RetourAccueil.astro";
+import BasePage from "@layouts/BasePage.astro";
+import JsOnly from "@layouts/JsOnly.astro";
+
+
+---
+<BasePage>
+    <JsOnly>
+        <h1>Exclusif Javascript !</h1>
+        <p>ici on adore l'<b>intéractivité</b></p>
+        <RetourAccueil />
+    </JsOnly>
+    <noscript>
+        <h1>pouah</h1>
+        <p>ça manque <i>d'intéractivité</i> ...</p>
+    </noscript>
+    <p>un site tout à fait normal</p>
+</BasePage>

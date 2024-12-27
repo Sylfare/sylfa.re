@@ -2,79 +2,100 @@
 import Icon from "@components/Icon.astro";
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
+import JsOnly from "./JsOnly.astro";
 ---
-
-<div id="config-container" class="window">
-  <input type="checkbox" id="theme-toggle" />
-  <TitleBar title="Configuration"/>
-  <div id="config" class="window-body">
-    <fieldset id="config-theme">
-      <legend>Thème</legend>
-      <ThemeRadios />
-    </fieldset>
+<JsOnly>
+  <div id="config-container" class="window">
+    <input type="checkbox" id="theme-toggle" />
+    <TitleBar title="Configuration"/>
+    <div id="config" class="window-body">
+      <fieldset id="config-theme">
+        <legend>Thème</legend>
+        <ThemeRadios />
+      </fieldset>
+    </div>
+    
+    <label for="theme-toggle" id="theme-hide">Fermer</label>
   </div>
-  <noscript><Icon type="warning"/> JS désactivé, le thème ne sera pas sauvegardé</noscript>
-  
-  <label for="theme-toggle" id="theme-hide">Fermer</label>
-</div>
-<label for="theme-toggle" id="theme-show">Paramètres</label>
 
+  <label for="theme-toggle" id="theme-show">Paramètres</label>
+</JsOnly>
 <style lang="less">
-@import (reference) "@css/themes.less";
-  #theme-toggle {
-    display: none;
-  }
+  @import (reference) "@css/themes.less";
 
   #config-container {
     display: none;
-    flex-direction: column;
-    &:has(#theme-toggle:checked) {
-      display: flex;
-    }
-  }
-  body:has(#theme-toggle:checked) #config {
-    display: flex;
+    visibility: hidden;
   }
 
-
-  #theme-show {
-    position: absolute;
-    align-self: flex-end;
-    right: 10px;
-    top: 10px;
-    @{theme-98} & {
-      &:extend(#theme-98 button all);
+  @supports selector(body:has(input:checked)) {
+    #config-container {
+      display: block;
+      visibility: visible;
     }
-    
-    body:has(#theme-toggle:checked) & {
+
+
+    #theme-toggle {
       display: none;
     }
-  }
 
-  #theme-hide {
-    
-    align-self: flex-end;
-    right: 10px;
-    bottom: 10px;
-
-    @{theme-98} & {
-      &:extend(#theme-98 button all);
+    #config-container {
+      display: none;
+      flex-direction: column;
+      &:has(#theme-toggle:checked) {
+        display: flex;
+      }
     }
-  }  
+    body:has(#theme-toggle:checked) #config {
+      display: flex;
+    }
+
+
+    #theme-show {
+      position: absolute;
+      align-self: flex-end;
+      right: 10px;
+      top: 10px;
+      html.theme-98 & {
+        &:extend(#theme-98 button all);
+      }
+      
+      body:has(#theme-toggle:checked) & {
+        display: none;
+      }
+    }
+
+    #theme-hide {
+      
+      align-self: flex-end;
+      right: 10px;
+      bottom: 10px;
+
+      html.theme-98 & {
+        &:extend(#theme-98 button all);
+      }
+    }  
+  }
 </style>
 
 
-<script is:inline>
+<script>
   // charger le thème si défini
   const theme = localStorage.getItem('theme');
   if(theme) {
     const radio = document.getElementById('theme-'+theme);
-    document.documentElement.dataset.theme = theme;
-    if(radio) {
-      radio.checked = true;
-    }
+    saveTheme(theme);
   }
-</script>
-<script>
-  document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", function(e){ document.getElementById("theme-toggle").checked = false } );
+
+  document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => document.getElementById("theme-toggle").checked = false );
+
+    function saveTheme(name: string) {
+        localStorage.setItem("theme", name);
+        document.documentElement.classList.value = "";
+        document.documentElement.classList.add('theme-' + name);
+    }
+    document.querySelectorAll('#config-theme input[type="radio"]').forEach(i => i.addEventListener("change", (e) => {
+        saveTheme(e.target.dataset.theme)
+    }
+    ));
 </script>
