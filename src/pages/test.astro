@@ -7,9 +7,20 @@ import JsOnly from "@layouts/JsOnly.astro";
 ---
 <BasePage>
     <JsOnly>
-        <h1>Exclusif Javascript !</h1>
-        <p>ici on adore l'<b>intéractivité</b></p>
-        <RetourAccueil />
+        <div id="jsonly">
+
+            <h1>Exclusif Javascript !</h1>
+            <p>ici on adore l'<b>intéractivité</b></p>
+            <RetourAccueil />
+            <script>
+                document.addEventListener("jsonly", () => {
+                    alert("coucou");
+                    console.log("ok");
+                });
+                console.log("et là ?");
+            </script>
+        <p>ah jsuis en retard oups</p>
+        </div>
     </JsOnly>
     <noscript>
         <h1>pouah</h1>
@@ -17,3 +28,8 @@ import JsOnly from "@layouts/JsOnly.astro";
     </noscript>
     <p>un site tout à fait normal</p>
 </BasePage>
+<style>
+    #jsonly {
+        background-color: yellow;
+    }
+</style>

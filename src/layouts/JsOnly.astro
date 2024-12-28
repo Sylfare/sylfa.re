@@ -2,15 +2,24 @@
 let content = '';
 if(Astro.slots.has('default')) {
     content = await Astro.slots.render('default');
-    content = '<script lang="text/html">' + content + '</script>';
+    content = content.replaceAll(/<\/?script[^>]*>/g, "").replaceAll(/<\/script>/g, "</zcript>");
 }
 ---
-<Fragment set:html={content}></Fragment>
+<script is:raw set:html={content} lang="text/html">
+</script>
 <script>
-    document.addEventListener("DOMContentLoaded", function(e) {
-        document.querySelectorAll('script[lang="text/html"]').forEach(node => 
-            // bien fermer les balises sinon ça casse tout
-            node.outerHTML = node.innerHTML.replaceAll(/<input([^>]+)>/g, "<input$1 />")
-        );
-    });    
+    const event = new Event("jsonly", {cancelable: false, bubbles: true});
+    function checkOnlyJs(node: Element = document.body) {
+        node.querySelectorAll('script[lang="text/html"]').forEach((element) => {
+            const parent = element.parentElement;                                                    
+            const recheck = element.innerHTML.indexOf("<\/zcript>") != -1;                                
+            const contenu = element.innerHTML.replaceAll("<\/zcript>",  "<\/script>");
+            const nouveauBloc = document.createElement("div");
+            parent?.replaceChild(nouveauBloc, element);
+            nouveauBloc.outerHTML = contenu;
+        });
+        // document.dispatchEvent(event);
+        setTimeout(() => document.dispatchEvent(event), 500);
+    }
+    document.addEventListener("DOMContentLoaded", e => checkOnlyJs());
 </script>

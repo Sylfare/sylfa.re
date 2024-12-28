@@ -57,7 +57,7 @@ import JsOnly from "./JsOnly.astro";
       right: 10px;
       top: 10px;
       html.theme-98 & {
-        &:extend(#theme-98 button all);
+        &:extend(html.theme-98 button all);
       }
       
       body:has(#theme-toggle:checked) & {
@@ -72,7 +72,7 @@ import JsOnly from "./JsOnly.astro";
       bottom: 10px;
 
       html.theme-98 & {
-        &:extend(#theme-98 button all);
+        &:extend(html.theme-98 button all);
       }
     }  
   }
@@ -87,15 +87,19 @@ import JsOnly from "./JsOnly.astro";
     saveTheme(theme);
   }
 
-  document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => document.getElementById("theme-toggle").checked = false );
+  document.addEventListener("jsonly", () => {
+    document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => document.getElementById("theme-toggle").checked = false );
+    document.querySelectorAll('#config-theme input[type="radio"]').forEach(i => i.addEventListener("change", (e) => {
+        saveTheme(e.target.dataset.theme)
+    }
+    ));
+  });
+
 
     function saveTheme(name: string) {
         localStorage.setItem("theme", name);
         document.documentElement.classList.value = "";
         document.documentElement.classList.add('theme-' + name);
     }
-    document.querySelectorAll('#config-theme input[type="radio"]').forEach(i => i.addEventListener("change", (e) => {
-        saveTheme(e.target.dataset.theme)
-    }
-    ));
+    
 </script>
