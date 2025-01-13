@@ -1,24 +1,31 @@
 ---
+import JsOnly from "./JsOnly.astro";
+
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="theme-space">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="alternate" href={new URL("feeds/changelog.xml", Astro.url )} type="application/rss+xml" title="RSS">
     <title>Le site de Sylfare</title>
-    
   </head>
   <body>
     <slot />
+    <JsOnly></JsOnly>
   </body>
 </html>
 <style lang="less" is:global>
   @import (reference) "@css/themes.less";
-  @{theme-98} {    
+  html.theme-98 {    
     footer {
       text-align: center;
+    }
+  }
+  @media (min-width: @size-mobile) {
+    html.theme-98 body {
+      padding: 1em 25%;
     }
   }
 </style>

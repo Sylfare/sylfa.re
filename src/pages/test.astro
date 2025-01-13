@@ -1,0 +1,35 @@
+---
+import RetourAccueil from "@components/RetourAccueil.astro";
+import BasePage from "@layouts/BasePage.astro";
+import JsOnly from "@layouts/JsOnly.astro";
+
+
+---
+<BasePage>
+    <JsOnly>
+        <div id="jsonly">
+
+            <h1>Exclusif Javascript !</h1>
+            <p>ici on adore l'<b>intéractivité</b></p>
+            <RetourAccueil />
+            <script>
+                document.addEventListener("jsonly", () => {
+                    alert("coucou");
+                    console.log("ok");
+                });
+                console.log("et là ?");
+            </script>
+        <p>ah jsuis en retard oups</p>
+        </div>
+    </JsOnly>
+    <noscript>
+        <h1>pouah</h1>
+        <p>ça manque <i>d'intéractivité</i> ...</p>
+    </noscript>
+    <p>un site tout à fait normal</p>
+</BasePage>
+<style>
+    #jsonly {
+        background-color: yellow;
+    }
+</style>

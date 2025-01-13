@@ -7,7 +7,6 @@ import question from "@img/question.gif";
 import personnages from "@img/personnages.gif";
 import construction from "@img/construction.gif";
 import Navigation from "@components/Navigation.astro";
-
 ---
 
 <Page title="Bienve&shy;nue sur le site de Sylfare !">
@@ -39,15 +38,28 @@ import Navigation from "@components/Navigation.astro";
 <style lang="less">
   @import (reference) "@css/themes.less";
 
-  @media (max-width: 400px) {
-    flex-direction: column;
+  @media (max-width: 960px) {
+    .nav {
+      padding-left: 0;
+    }
+
+    .nav li {
+      width: 100%;
+    } 
   }
 
-  @{theme-98} {
+  @media (min-width: 960px) {
+    .nav {
+      gap: 1rem;
+    }
+  }
+
+  html.theme-98 {
     .nav {
       display: flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
+      margin: 0;
     }
 
     .nav li {

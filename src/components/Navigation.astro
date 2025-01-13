@@ -8,15 +8,15 @@ const { href, image, imageAlt } = Astro.props;
 <style lang="less">
     @import (reference) "@css/themes.less";
 
-    @{theme-98} {
+    html.theme-98 {
         a {
-            display: inline-flex;
+            display: flex;
             flex-basis: 100px;
             flex: 1;
             align-items: center;
-            &:extend(#theme-98 button);
+            &:extend(html.theme-98 button);
             height: 64px;
-            margin: .5rem;
+            margin: 0.5rem 0;
         }
     }
 </style>
