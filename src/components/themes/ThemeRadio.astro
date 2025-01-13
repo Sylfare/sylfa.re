@@ -1,7 +1,7 @@
 ---
-const { slug, name, checked } = Astro.props;
+const { slug, name } = Astro.props;
 ---
 <div id="field-row">
-    <input type="radio" id={"theme-"+slug} name="theme" data-theme={slug} {checked} />
+    <input type="radio" id={"theme-"+slug} name="theme" data-theme={slug} />
     <label for={"theme-"+slug}>{name}</label>
 </div>

@@ -1,12 +1,10 @@
 ---
-import Icon from "@components/Icon.astro";
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
 import JsOnly from "./JsOnly.astro";
 ---
 <JsOnly>
-  <div id="config-container" class="window">
-    <input type="checkbox" id="theme-toggle" />
+  <div id="config-container" class="window hidden">
     <TitleBar title="Configuration"/>
     <div id="config" class="window-body">
       <fieldset id="config-theme">
@@ -14,11 +12,8 @@ import JsOnly from "./JsOnly.astro";
         <ThemeRadios />
       </fieldset>
     </div>
-    
-    <label for="theme-toggle" id="theme-hide">Fermer</label>
   </div>
-
-  <label for="theme-toggle" id="theme-show" aria-hidden="true">Paramètres</label>
+  <button id="theme-toggle">Paramètres</button>
 </JsOnly>
 <style lang="less">
   @import (reference) "@css/themes.less";
@@ -28,54 +23,24 @@ import JsOnly from "./JsOnly.astro";
     visibility: hidden;
   }
 
-  @supports selector(body:has(input:checked)) {
-    #config-container {
-      display: block;
-      visibility: visible;
-    }
+  #config-container {
+    display: block;
+    visibility: visible;
+  }
 
+  #config-container.hidden {
+    display: none;
+  }
 
+  @media (min-width: @size-mobile) {
     #theme-toggle {
-      display: none;
-    }
-
-    #config-container {
-      display: none;
-      flex-direction: column;
-      &:has(#theme-toggle:checked) {
-        display: flex;
-      }
-    }
-    body:has(#theme-toggle:checked) #config {
-      display: flex;
-    }
-
-
-    #theme-show {
       position: absolute;
       align-self: flex-end;
       right: 10px;
       top: 10px;
-      html.theme-98 & {
-        &:extend(html.theme-98 button all);
-      }
-      
-      body:has(#theme-toggle:checked) & {
-        display: none;
-      }
     }
-
-    #theme-hide {
-      
-      align-self: flex-end;
-      right: 10px;
-      bottom: 10px;
-
-      html.theme-98 & {
-        &:extend(html.theme-98 button all);
-      }
-    }  
   }
+  
 </style>
 
 
@@ -89,7 +54,7 @@ import JsOnly from "./JsOnly.astro";
 
   document.addEventListener("jsonly", () => {
     // close theme window
-    document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => document.getElementById("theme-toggle").checked = false );
+    document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => showConfig(false));
     
     // save theme on toggle
     document.querySelectorAll('#config-theme input[type="radio"]').forEach(i => i.addEventListener("change", (e) => {
@@ -104,11 +69,33 @@ import JsOnly from "./JsOnly.astro";
         themeRadio.checked = true;
       }
     }
+
+    let isConfigOpen = false;
+
+    const configWindow = document.getElementById("config-container");
+    const themeToggle = document.getElementById("theme-toggle");
+
+    themeToggle?.addEventListener("click", () => showConfig(isConfigOpen = !isConfigOpen));
+
+    function showConfig(show: boolean) {
+      if(configWindow && themeToggle) {
+        if(show) {
+          configWindow.classList.remove("hidden");
+          themeToggle.innerText = "Fermer";
+        } else {
+          configWindow.classList.add("hidden");
+          themeToggle.innerText = "Paramètres";
+        }
+      }
+      
+    }
   });
 
   function saveTheme(name: string) {
       localStorage.setItem("theme", name);
       document.documentElement.classList.value = "";
       document.documentElement.classList.add('theme-' + name);
-  }    
+  }
+  
+  
 </script>

@@ -20,7 +20,6 @@ export default defineConfig({
   image: {
     service: passthroughImageService()  
   },
-  scopedStyleStrategy: "where",
 
   experimental: {
     contentIntellisense: true,
