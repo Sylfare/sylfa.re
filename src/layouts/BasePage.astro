@@ -1,4 +1,6 @@
 ---
+import JsOnly from "./JsOnly.astro";
+
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -8,10 +10,10 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="alternate" href={new URL("feeds/changelog.xml", Astro.url )} type="application/rss+xml" title="RSS">
     <title>Le site de Sylfare</title>
-    
   </head>
   <body>
     <slot />
+    <JsOnly></JsOnly>
   </body>
 </html>
 <style lang="less" is:global>
@@ -19,6 +21,17 @@ const { title } = Astro.props;
   html.theme-98 {    
     footer {
       text-align: center;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+    }
+  }
+  @media (min-width: 960px) {
+    html.theme-98 body {
+      padding: 1em 25%;
     }
   }
 </style>
