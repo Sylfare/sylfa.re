@@ -88,18 +88,27 @@ import JsOnly from "./JsOnly.astro";
   }
 
   document.addEventListener("jsonly", () => {
+    // close theme window
     document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => document.getElementById("theme-toggle").checked = false );
+    
+    // save theme on toggle
     document.querySelectorAll('#config-theme input[type="radio"]').forEach(i => i.addEventListener("change", (e) => {
         saveTheme(e.target.dataset.theme)
     }
-    ));
+    ));   
+
+    // check radio button on load
+    if(theme) {
+      const themeRadio = document.getElementById(`theme-${theme}`) ?? document.getElementById(`theme-space`) ?? null;
+      if(themeRadio) {
+        themeRadio.checked = true;
+      }
+    }
   });
 
-
-    function saveTheme(name: string) {
-        localStorage.setItem("theme", name);
-        document.documentElement.classList.value = "";
-        document.documentElement.classList.add('theme-' + name);
-    }
-    
+  function saveTheme(name: string) {
+      localStorage.setItem("theme", name);
+      document.documentElement.classList.value = "";
+      document.documentElement.classList.add('theme-' + name);
+  }    
 </script>
