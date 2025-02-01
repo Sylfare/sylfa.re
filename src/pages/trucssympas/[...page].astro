@@ -1,0 +1,24 @@
+---
+import Section from '@components/Section.astro';
+import SousPage from '@layouts/SousPage.astro';
+import TrucSympa from '@layouts/TrucSympa.astro';
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro/compiler-runtime';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (async (paginate) => {
+    const changelogList = await getCollection('trucSympa');
+    return paginate.paginate(changelogList, {pageSize: 10});
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+---
+<SousPage title="Vous cherchez des trucs sympas ?">
+    <p>viendez</p>
+    <Section title="Que cherchez-vous ? aa">
+    </Section>
+
+    {page.data.map(truc => <TrucSympa {truc}></TrucSympa>)}
+
+</SousPage>

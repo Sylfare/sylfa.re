@@ -1,0 +1,15 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+import Section from '@components/Section.astro';
+import type { TrucSympa } from 'src/content.config';
+
+const { truc } = Astro.props;
+type Props = {
+    truc: CollectionEntry<'trucSympa'>
+}
+const { Content } = await render(truc);
+---
+<Section title={truc.data.nom}>
+    <Content />
+</Section>
