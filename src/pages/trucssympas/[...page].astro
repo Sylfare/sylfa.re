@@ -1,6 +1,7 @@
 ---
 import Section from '@components/Section.astro';
 import SousPage from '@layouts/SousPage.astro';
+import TrucsSympas from '@layouts/TrucsSympas.astro';
 import TrucSympa from '@layouts/TrucSympa.astro';
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro/compiler-runtime';
@@ -19,16 +20,12 @@ const tags: {
 trucsSympas.forEach(truc => truc.data.tags?.forEach(tag => 
     Object.hasOwn(tags, tag) ? tags[tag]++ : (tags[tag] = 1)
 ));
+const trucsTries = trucsSympas.sort((a, b) => new Intl.Collator('fr').compare(a.data.nom, b.data.nom));
+
 const { page } = Astro.props;
 
 
 ---
-<SousPage title="Vous cherchez des trucs sympas ?">
-    <p>viendez</p>
-    <Section title="Que cherchez-vous ?">
-        {Object.entries(tags).map(([tag, amount]) => <><a href={`/trucssympas/tags/${tag}`}>{tag} ({amount})</a> </>)}
-    </Section>
+<TrucsSympas {page} trucs={trucsTries} tagCount={tags}>
 
-    {page.data.map(truc => <TrucSympa {truc}></TrucSympa>)}
-
-</SousPage>
+</TrucsSympas>

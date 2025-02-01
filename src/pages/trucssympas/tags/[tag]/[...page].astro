@@ -7,12 +7,13 @@ export async function getStaticPaths ({paginate}) {
     const posts = await getCollection('trucSympa');
     const tags = [...new Set(posts.flatMap(truc => truc.data.tags))];
     const tagCount = Object.fromEntries(tags.map(tag => [tag, 0]));
-    
-    posts.flatMap(post => post.data.tags).forEach(tag => tag && tagCount[tag]++)
+    posts.flatMap(post => post.data.tags).forEach(tag => tag && tagCount[tag]++);
+
+    const postsTries = posts.sort((a, b) => new Intl.Collator('fr').compare(a.data.nom, b.data.nom));
 
     const postsByTag = tags.flatMap(tag => {
         if(tag) {
-            const filteredPosts = posts.filter(truc => truc.data.tags?.includes(tag));
+            const filteredPosts = postsTries.filter(truc => truc.data.tags?.includes(tag));
             return paginate(filteredPosts, {
                 params: { tag },
                 props: { tagCount },

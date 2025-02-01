@@ -1,6 +1,6 @@
 ---
 nom: Return Youtube Dislike
-tags: ["extension navigateur", "youtube", "opensource"]
+tags: ["extension navigateur", "youtube", "opensource", "gratuit"]
 liens:
     Site: https://returnyoutubedislike.com/
     Code source: https://github.com/Anarios/return-youtube-dislike
