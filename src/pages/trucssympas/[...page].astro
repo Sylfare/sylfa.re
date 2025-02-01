@@ -7,16 +7,26 @@ import { render } from 'astro/compiler-runtime';
 import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async (paginate) => {
-    const changelogList = await getCollection('trucSympa');
-    return paginate.paginate(changelogList, {pageSize: 10});
+    const trucsSympas = await getCollection('trucSympa');
+    return paginate.paginate(trucsSympas, {pageSize: 10});
 }) satisfies GetStaticPaths;
 
+const trucsSympas = await getCollection('trucSympa');
+const tags: {
+    [index: string]: number
+} = {}
+
+trucsSympas.forEach(truc => truc.data.tags?.forEach(tag => 
+    Object.hasOwn(tags, tag) ? tags[tag]++ : (tags[tag] = 1)
+));
 const { page } = Astro.props;
+
 
 ---
 <SousPage title="Vous cherchez des trucs sympas ?">
     <p>viendez</p>
-    <Section title="Que cherchez-vous ? aa">
+    <Section title="Que cherchez-vous ?">
+        {Object.entries(tags).map(([tag, amount]) => <><a href={`/trucssympas/tags/${tag}`}>{tag} ({amount})</a> </>)}
     </Section>
 
     {page.data.map(truc => <TrucSympa {truc}></TrucSympa>)}

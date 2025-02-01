@@ -1,6 +1,6 @@
 ---
 nom: uBlock Origin
-tags: ["extension", "pubs", "opensource"]
+tags: ["extension navigateur", "pubs", "opensource", "youtube"]
 liens:
     Site officiel: https://ublockorigin.com/
     Code source: https://github.com/gorhill/uBlock

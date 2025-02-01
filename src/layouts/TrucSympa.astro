@@ -9,7 +9,12 @@ type Props = {
     truc: CollectionEntry<'trucSympa'>
 }
 const { Content } = await render(truc);
+const liens = Object.entries(truc.data.liens ?? {});
+const tags = truc.data.tags ?? [];
 ---
-<Section title={truc.data.nom}>
+<Section title={truc.data.nom} id={truc.id}>
+    <div>{ tags.map(tag => <><a href={`/trucssympas/tags/${tag}`}>#{tag}</a> </>) }</div>
+    <div>{ liens.map(([nom, href]) => <><a {href} target="_blank">{nom}</a> </>) }</div>
+    
     <Content />
 </Section>

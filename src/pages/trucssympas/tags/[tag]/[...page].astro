@@ -1,0 +1,32 @@
+---
+import TrucsSympas from "@layouts/TrucsSympas.astro";
+import { getCollection } from 'astro:content';
+
+
+export async function getStaticPaths ({paginate}) {
+    const posts = await getCollection('trucSympa');
+    const tags = [...new Set(posts.flatMap(truc => truc.data.tags))];
+    const tagCount = Object.fromEntries(tags.map(tag => [tag, 0]));
+    
+    posts.flatMap(post => post.data.tags).forEach(tag => tag && tagCount[tag]++)
+
+    const postsByTag = tags.flatMap(tag => {
+        if(tag) {
+            const filteredPosts = posts.filter(truc => truc.data.tags?.includes(tag));
+            return paginate(filteredPosts, {
+                params: { tag },
+                props: { tagCount },
+                pageSize: 10
+            });
+        } else {
+            return null;
+        }
+    });
+    return postsByTag;
+}
+let { tag } = Astro.params;
+
+let { page, tagCount } = Astro.props;
+---
+<TrucsSympas {tag} {tagCount} {page} trucs={page.data}>
+</TrucsSympas>
