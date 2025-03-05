@@ -1,0 +1,7 @@
+---
+import Navigation from "./Navigation.astro";
+const { urls } = Astro.props;
+
+---
+{ urls.prev && <Navigation href={urls.prev}>Précédent</Navigation>}
+{ urls.next && <Navigation href={urls.next}>Suivant</Navigation>}

@@ -2,8 +2,9 @@
 import Section from "@components/Section.astro";
 import SousPage from "./SousPage.astro";
 import TrucSympa from "./TrucSympa.astro";
+import PreviousNext from "@components/PreviousNext.astro";
 
-const { trucs, tag, tagCount } = Astro.props;
+const { trucs, tag, tagCount, page} = Astro.props;
 const tags = {};
 const title = tag ? `Trucs avec le tag "${tag}"` : 'Vous cherchez des trucs sympas ?';
 ---
@@ -15,5 +16,5 @@ const title = tag ? `Trucs avec le tag "${tag}"` : 'Vous cherchez des trucs symp
     </Section>
     
     {trucs.map(truc => <TrucSympa {truc}></TrucSympa>)}
-
+    <PreviousNext urls={page.url}>
 </SousPage>

@@ -9,7 +9,9 @@ import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async (paginate) => {
     const trucsSympas = await getCollection('trucSympa');
-    return paginate.paginate(trucsSympas, {pageSize: 10});
+    const trucsTries = trucsSympas.sort((a, b) => new Intl.Collator('fr').compare(a.data.nom, b.data.nom));
+
+    return paginate.paginate(trucsTries, {pageSize: 10});
 }) satisfies GetStaticPaths;
 
 const trucsSympas = await getCollection('trucSympa');
@@ -20,12 +22,11 @@ const tags: {
 trucsSympas.forEach(truc => truc.data.tags?.forEach(tag => 
     Object.hasOwn(tags, tag) ? tags[tag]++ : (tags[tag] = 1)
 ));
-const trucsTries = trucsSympas.sort((a, b) => new Intl.Collator('fr').compare(a.data.nom, b.data.nom));
 
 const { page } = Astro.props;
 
 
 ---
-<TrucsSympas {page} trucs={trucsTries} tagCount={tags}>
+<TrucsSympas {page} trucs={page.data} tagCount={tags}>
 
 </TrucsSympas>
