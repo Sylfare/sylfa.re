@@ -1,0 +1,10 @@
+---
+import Navigation from "@components/Navigation.astro";
+import SousPage from "./SousPage.astro";
+const { title } = Astro.props;
+
+---
+<SousPage title = {title}>
+    <slot />
+    <Navigation href="/trucssympas">Voir d'autres trucs sympas</Navigation>
+</SousPage>

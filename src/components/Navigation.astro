@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
 
-const { href, image, imageAlt } = Astro.props;
+const { href, image, imageAlt} = Astro.props;
 ---
-<a {href}>{ image && <Image src={image} alt={imageAlt} />}{image && " "}<slot /></a>
+<a {href} class={href ? "" : "disabled"}>{ image && <Image src={image} alt={imageAlt} />}{image && " "}<slot /></a>
 
 <style lang="less">
     @import (reference) "@css/themes.less";
@@ -11,12 +11,17 @@ const { href, image, imageAlt } = Astro.props;
     html.theme-98 {
         a {
             display: flex;
-            flex-basis: 100px;
             flex: 1;
             align-items: center;
             &:extend(html.theme-98 button);
             height: 64px;
             margin: 0.5rem 0;
+
+            &.disabled {
+                color: var(--button-shadow);
+                text-shadow: 1px 1px 0 var(--button-highlight);
+            }
         }
+        
     }
 </style>

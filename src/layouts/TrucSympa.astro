@@ -1,0 +1,23 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+import Section from '@components/Section.astro';
+import type { TrucSympa } from 'src/content.config';
+
+const { truc } = Astro.props;
+type Props = {
+    truc: CollectionEntry<'trucSympa'>
+}
+const { Content } = await render(truc);
+const liens = Object.entries(truc.data.liens ?? {});
+const tags = truc.data.tags ?? [];
+---
+<Section title={truc.data.nom} id={truc.id}>
+    <div>{ tags.map(tag => <><a href={`/trucssympas/tags/${tag}`}>#{tag}</a> </>) }</div>
+    <div>
+        { liens.map(([nom, href]) => <><a {href} target="_blank">{nom}</a> </>) }
+        <a href={"/trucssympas/truc/"+truc.id}>Permalien</a>
+    </div>
+    
+    <Content />
+</Section>

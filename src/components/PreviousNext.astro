@@ -1,0 +1,73 @@
+---
+import { custom } from "astro:schema";
+import Navigation from "./Navigation.astro";
+import NavPage from "./NavPage.astro";
+const { page } = Astro.props;
+
+let numerosAffiches: number[] = [];
+const range = 7
+
+const current = page.currentPage;
+let leftPage;
+if(current < range) {
+    leftPage = 1;
+} else if (current > page.lastPage - range + 1) {
+    leftPage = page.lastPage - range + 1;
+} else {
+    leftPage = current - Math.floor(range/2)
+}
+
+const rangeSize = 2*range+1;
+
+if(page.lastPage > rangeSize) {
+    numerosAffiches = Array.from({length: range}, (_, index) => index + leftPage);
+
+} else {
+    numerosAffiches = Array.from({length: page.lastPage}, (_, index) => index + 1)
+}
+
+const showLeftEllipsis = current >= range;
+const showRightEllipsis = current <= page.lastPage - range;
+---
+{(page.url.prev || page.url.next) && 
+<div id="boutonsNavigation">
+    <Navigation href={page.url.prev} class="prevNext" id="prev">Précédent</Navigation>
+    
+    <div class="pageSelect">
+        {showLeftEllipsis && <><NavPage number="1" currentPageUrl={page.url.current} currentPageNumber={page.currentPage}>1</NavPage><NavPage>...</NavPage></>}
+        {
+            numerosAffiches.map(number => <NavPage {number} currentPageUrl={page.url.current} currentPageNumber={page.currentPage}>{number}</NavPage>)
+        }
+        {showRightEllipsis && <><NavPage>...</NavPage><NavPage number={page.lastPage} currentPageUrl={page.url.current} currentPageNumber={page.currentPage}>{page.lastPage}</NavPage></>
+    }
+
+    </div>
+
+    <Navigation href={page.url.next} class="prevNext" id="next">Suivant</Navigation>
+</div>
+}
+
+<style lang="less">
+
+@import (reference) "@css/themes.less";
+    html.theme-98 {
+        #boutonsNavigation {
+            display: grid;
+            grid-template-columns: 2fr 3fr 2fr;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .navPage {
+            width: min-content;
+            min-width: 10px;
+            flex: 1;
+        }
+
+        .pageSelect {
+            display: flex;
+        }
+    }
+    
+
+</style>

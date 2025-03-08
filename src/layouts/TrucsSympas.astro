@@ -1,0 +1,20 @@
+---
+import Section from "@components/Section.astro";
+import SousPage from "./SousPage.astro";
+import TrucSympa from "./TrucSympa.astro";
+import PreviousNext from "@components/PreviousNext.astro";
+
+const { trucs, tag, tagCount, page} = Astro.props;
+const tags = {};
+const title = tag ? `Trucs avec le tag "${tag}"` : 'Vous cherchez des trucs sympas ?';
+---
+<SousPage {title}>
+    {!tag && <p>viendez</p>}
+    <Section title="Que cherchez-vous ?">
+        <a href="/trucssympas">Tout</a>
+        {Object.entries(tagCount).sort((a, b) => b[1] - a[1]).map(([tag, amount]) => <><a href={`/trucssympas/tags/${tag}`}>{tag} ({amount})</a> </>)}
+    </Section>
+    
+    {trucs.map(truc => <TrucSympa {truc}></TrucSympa>)}
+    <PreviousNext {page}>
+</SousPage>

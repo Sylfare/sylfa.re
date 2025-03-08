@@ -1,0 +1,28 @@
+---
+const { currentPageUrl, currentPageNumber, number } = Astro.props;
+const baseUrl = currentPageUrl?.replace(/([\w\d:\/]+?)(\/?\d*$)/, "$1");
+const href = currentPageUrl ? baseUrl + (number == 1 ? "" : `/${number}`) : null;
+---
+<a {href} class={currentPageNumber == number ? "current" : null}><slot /></a>
+
+<style lang="less">
+@import (reference) "@css/themes.less";
+
+
+html.theme-98 {
+    a {
+        &:extend(html.theme-98 button);
+        margin: 0.5rem 0;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        min-width: unset;
+        flex: 1;
+        text-decoration: none;
+
+        &.current {
+            font-weight: bold;
+        }
+    }
+}
+</style>
