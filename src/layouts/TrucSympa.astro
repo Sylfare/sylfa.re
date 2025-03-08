@@ -14,7 +14,10 @@ const tags = truc.data.tags ?? [];
 ---
 <Section title={truc.data.nom} id={truc.id}>
     <div>{ tags.map(tag => <><a href={`/trucssympas/tags/${tag}`}>#{tag}</a> </>) }</div>
-    <div>{ liens.map(([nom, href]) => <><a {href} target="_blank">{nom}</a> </>) }</div>
+    <div>
+        { liens.map(([nom, href]) => <><a {href} target="_blank">{nom}</a> </>) }
+        <a href={"/trucssympas/truc/"+truc.id}>Permalien</a>
+    </div>
     
     <Content />
 </Section>
