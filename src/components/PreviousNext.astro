@@ -23,7 +23,7 @@ if(page.lastPage > rangeSize) {
     numerosAffiches = Array.from({length: range}, (_, index) => index + leftPage);
 
 } else {
-    numerosAffiches = Array.from({length: page.lastPage-1}, (_, index) => index + 1)
+    numerosAffiches = Array.from({length: page.lastPage}, (_, index) => index + 1)
 }
 
 const showLeftEllipsis = current >= range;
@@ -52,21 +52,24 @@ console.log(numerosAffiches)
 <style lang="less">
 
 @import (reference) "@css/themes.less";
-    #boutonsNavigation {
-        display: grid;
-        grid-template-columns: 2fr 3fr 2fr;
-        width: 100%;
-        justify-content: space-around;
-    }
+    html.theme-98 {
+        #boutonsNavigation {
+            display: grid;
+            grid-template-columns: 2fr 3fr 2fr;
+            width: 100%;
+            justify-content: space-around;
+        }
 
-    .navPage {
-        width: min-content;
-        min-width: 10px;
-        flex: 1;
-    }
+        .navPage {
+            width: min-content;
+            min-width: 10px;
+            flex: 1;
+        }
 
-    .pageSelect {
-        display: flex;
+        .pageSelect {
+            display: flex;
+        }
     }
+    
 
 </style>
