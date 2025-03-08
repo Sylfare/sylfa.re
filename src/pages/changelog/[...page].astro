@@ -12,9 +12,10 @@ export const getStaticPaths = (async (paginate) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+
 ---
 <SousPage title={`Changelog${(page.currentPage > 1) ? " - page " + page.currentPage : ""}`}>
     { page.data.map(log => <ChangelogLog changelog={log}/>) }
-    <PreviousNext urls={page.url} />
+    <PreviousNext {page} />
 </SousPage>
 

@@ -16,5 +16,5 @@ const title = tag ? `Trucs avec le tag "${tag}"` : 'Vous cherchez des trucs symp
     </Section>
     
     {trucs.map(truc => <TrucSympa {truc}></TrucSympa>)}
-    <PreviousNext urls={page.url}>
+    <PreviousNext {page}>
 </SousPage>

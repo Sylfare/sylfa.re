@@ -1,10 +1,6 @@
 ---
-import Section from '@components/Section.astro';
-import SousPage from '@layouts/SousPage.astro';
 import TrucsSympas from '@layouts/TrucsSympas.astro';
-import TrucSympa from '@layouts/TrucSympa.astro';
 import type { GetStaticPaths } from 'astro';
-import { render } from 'astro/compiler-runtime';
 import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async (paginate) => {
