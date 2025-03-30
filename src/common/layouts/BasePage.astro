@@ -18,7 +18,11 @@ const t = useTranslations(Astro.currentLocale);
     <title>{t(a=>a.site?.title)}</title>
   </head>
   <body>
-    <slot />
+    <div id="container">
+      <slot />
+    </div>
+
+    <JsOnly></JsOnly>
   </body>
 </html>
 <style lang="less" is:global>
