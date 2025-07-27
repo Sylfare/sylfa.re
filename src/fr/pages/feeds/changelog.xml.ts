@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
 
-const parser = new MarkdownIt();
+const parser = new MarkdownIt();    
 
 const changelogs = await getCollection("changelog");
 const latestChangelogs: RSSFeedItem[] = changelogs
@@ -17,11 +17,11 @@ const latestChangelogs: RSSFeedItem[] = changelogs
     })
 );
 
-export function GET(context: RSSOptions) {
+export function GET(context: {url: URL}) {
     return rss({
         title: 'Sylfare - changelog',
         description: 'Les nouveautés du site',
         items: latestChangelogs,
-        site: context.site,
+        site: context.url.origin,
     });
 }

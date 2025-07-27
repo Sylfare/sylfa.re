@@ -3,11 +3,11 @@ import { defineConfig, passthroughImageService } from "astro/config";
 import compressor from "astro-compressor";
 
 // https://astro.build/config
-export default {
+export default defineConfig({
+  
   vite: {
     build: {
-      sourcemap: true,
-
+      sourcemap: true,   
     },
     css: {
       devSourcemap: true,
@@ -15,14 +15,19 @@ export default {
   },
   build: {
     assets: "assets",
-    assetsPrefix: 'https://assets.sylfa.re'
+    assetsPrefix: import.meta.env.ASSETS_PREFIX,
+
   },
   image: {
-    service: passthroughImageService()  
+    service: passthroughImageService(),
+
   },
 
   experimental: {
     contentIntellisense: true,
   },
   integrations: [compressor()],
-};
+  i18n: {
+    locales: ["en", "fr"]
+  }
+});
