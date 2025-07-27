@@ -5,12 +5,10 @@ const { title, minimize = false, maximize = false } = Astro.props;
 ---
 
 <div class="title-bar">
-  <JsOnly>
-    <div class="title-bar-text">{title}</div>
+  <JsOnly><div class="title-bar-text">{title}</div></JsOnly>
     <div class="title-bar-controls">
       {minimize && <button aria-label="Minimize" />}
       {maximize && <button aria-label="Maximize" />}
       <button aria-label="Close"></button>
     </div>
-  </JsOnly>
 </div>
