@@ -24,11 +24,11 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@css/*": ["./src/css/*"],
-      "@img/*": ["./src/img/*"],
-      "@banners/*": ["./src/img/banners/*"]
+      "@components/*": ["./src/common/components/*"],
+      "@layouts/*": ["./src/common/layouts/*"],
+      "@css/*": ["./src/common/css/*"],
+      "@img/*": ["./src/common/img/*"],
+      "@banners/*": ["./src/common/img/banners/*"]
     },
     "baseUrl": "./"
     
