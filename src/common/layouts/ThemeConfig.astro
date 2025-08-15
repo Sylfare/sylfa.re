@@ -45,9 +45,7 @@ import JsOnly from "./JsOnly.astro";
 
 
 <script>
-
   function saveTheme(name: string) {
-      console.debug("on enregistre ", name);
       localStorage.setItem("theme", name);
       document.documentElement.classList.value = "theme-" + name;
   }
@@ -63,11 +61,7 @@ import JsOnly from "./JsOnly.astro";
     themeToggle?.addEventListener("click", () => showConfig(isConfigOpen = !isConfigOpen));
 
       // save theme on toggle
-      console.log("yeahrhhh");
-      document.querySelectorAll('.theme-option').forEach(i => i.addEventListener("change", (e) => {
-          saveTheme(e.target.dataset.theme)
-      }
-      )); 
+      document.querySelectorAll('.theme-option').forEach(i => i.addEventListener("change", (e) => saveTheme(e.target.dataset.theme))); 
 
 
     function showConfig(show: boolean) {
@@ -85,14 +79,4 @@ import JsOnly from "./JsOnly.astro";
   });
   
   
-</script>
-
-<script>
-
-    document.addEventListener("load", e => {
-        
-
-    })
-
-
 </script>
