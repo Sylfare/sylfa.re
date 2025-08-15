@@ -5,15 +5,16 @@ const { title } = Astro.props;
 <!DOCTYPE html>
 <html lang="fr" class="theme-space">
   <head>
+    <script blocking="render" async>
+      document.documentElement.classList.value = `theme-${localStorage.getItem('theme') ?? 'space'}`;
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="alternate" href={new URL("feeds/changelog.xml", Astro.url )} type="application/rss+xml" title="RSS">
     <title>Le site de Sylfare</title>
-    <script src="./jsonly.js"></script>
   </head>
   <body>
     <slot />
-    <JsOnly></JsOnly>
   </body>
 </html>
 <style lang="less" is:global>

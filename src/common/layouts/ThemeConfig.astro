@@ -45,37 +45,30 @@ import JsOnly from "./JsOnly.astro";
 
 
 <script>
-  // charger le thème si défini
-  const theme = localStorage.getItem('theme');
-  if(theme) {
-    const radio = document.getElementById('theme-'+theme);
-    saveTheme(theme);
-  }
 
+  function saveTheme(name: string) {
+      console.debug("on enregistre ", name);
+      localStorage.setItem("theme", name);
+      document.documentElement.classList.value = "theme-" + name;
+  }
   document.addEventListener("jsonly", () => {
     // close theme window
     document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => showConfig(false));
     
-    // save theme on toggle
-    document.querySelectorAll('#config-theme input[type="radio"]').forEach(i => i.addEventListener("change", (e) => {
-        saveTheme(e.target.dataset.theme)
-    }
-    ));   
-
-    // check radio button on load
-    if(theme) {
-      const themeRadio = document.getElementById(`theme-${theme}`) ?? document.getElementById(`theme-space`) ?? null;
-      if(themeRadio) {
-        themeRadio.checked = true;
-      }
-    }
-
     let isConfigOpen = false;
 
     const configWindow = document.getElementById("config-container");
     const themeToggle = document.getElementById("theme-toggle");
 
     themeToggle?.addEventListener("click", () => showConfig(isConfigOpen = !isConfigOpen));
+
+      // save theme on toggle
+      console.log("yeahrhhh");
+      document.querySelectorAll('.theme-option').forEach(i => i.addEventListener("change", (e) => {
+          saveTheme(e.target.dataset.theme)
+      }
+      )); 
+
 
     function showConfig(show: boolean) {
       if(configWindow && themeToggle) {
@@ -90,12 +83,16 @@ import JsOnly from "./JsOnly.astro";
       
     }
   });
+  
+  
+</script>
 
-  function saveTheme(name: string) {
-      localStorage.setItem("theme", name);
-      document.documentElement.classList.value = "";
-      document.documentElement.classList.add('theme-' + name);
-  }
-  
-  
+<script>
+
+    document.addEventListener("load", e => {
+        
+
+    })
+
+
 </script>
