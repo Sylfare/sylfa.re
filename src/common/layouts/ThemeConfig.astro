@@ -3,18 +3,20 @@ import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
 import JsOnly from "./JsOnly.astro";
 ---
-<JsOnly>
   <div id="config-container" class="window hidden">
-    <TitleBar title="Configuration"/>
-    <div id="config" class="window-body">
-      <fieldset id="config-theme">
-        <legend>Thème</legend>
-        <ThemeRadios />
-      </fieldset>
+    <JsOnly>
+      <TitleBar title="Configuration"/>
+      <div id="config" class="window-body">
+        <fieldset id="config-theme">
+          <legend>Thème</legend>
+          <ThemeRadios />
+        </fieldset>
+      </div>
     </div>
+  </JsOnly>
+  <div id="theme-button-slot">
+    <JsOnly><button id="theme-toggle">Paramètres</button></JsOnly>
   </div>
-  <button id="theme-toggle">Paramètres</button>
-</JsOnly>
 <style lang="less">
   @import (reference) "@css/themes.less";
 
@@ -32,12 +34,20 @@ import JsOnly from "./JsOnly.astro";
     display: none;
   }
 
-  @media (min-width: @size-mobile) {
+  #theme-toggle {
+    top: 23px;
+  }
+
+  html.theme-98 #theme-button-slot {
+    min-height: 23px;
+  }
+
+  @media (min-aspect-ratio: @aspect-ratio-mobile) {
     #theme-toggle {
       position: absolute;
       align-self: flex-end;
       right: 10px;
-      top: 10px;
+      width: initial;
     }
   }
   

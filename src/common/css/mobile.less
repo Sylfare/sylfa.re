@@ -1,5 +1,6 @@
 @size-mobile: 768px;
-@media (max-width: @size-mobile) {
+@aspect-ratio-mobile: 1/1;
+@media (max-width: @size-mobile) and (max-aspect-ratio: @aspect-ratio-mobile) {
     button {
         display: block;
         width: 100%;
