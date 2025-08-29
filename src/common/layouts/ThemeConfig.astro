@@ -2,6 +2,8 @@
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
 import JsOnly from "./JsOnly.astro";
+
+const DEFAULT_THEME = "space";
 ---
   <div id="config-container" class="window hidden">
     <JsOnly>
@@ -9,7 +11,7 @@ import JsOnly from "./JsOnly.astro";
       <div id="config" class="window-body">
         <fieldset id="config-theme">
           <legend>Thème</legend>
-          <ThemeRadios />
+          <ThemeRadios selected={DEFAULT_THEME} />
         </fieldset>
       </div>
     </div>
@@ -55,8 +57,11 @@ import JsOnly from "./JsOnly.astro";
 
 
 <script>
+  const THEME_STORAGE_KEY = "theme";
+  const DEFAULT_THEME = "space";
+
   function saveTheme(name: string) {
-      localStorage.setItem("theme", name);
+      localStorage.setItem(THEME_STORAGE_KEY, name);
       document.documentElement.classList.value = "theme-" + name;
   }
   document.addEventListener("jsonly", () => {
@@ -70,8 +75,17 @@ import JsOnly from "./JsOnly.astro";
 
     themeToggle?.addEventListener("click", () => showConfig(isConfigOpen = !isConfigOpen));
 
-      // save theme on toggle
-      document.querySelectorAll('.theme-option').forEach(i => i.addEventListener("change", (e) => saveTheme(e.target.dataset.theme))); 
+    const currentTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+    // if failed to select the current theme radio, select the default one
+    if(!(currentTheme && selectThemeRadio(currentTheme))) {
+      console.debug("oh noes");
+      selectThemeRadio(DEFAULT_THEME);        
+      
+    }
+    
+    // save theme on toggle
+    document.querySelectorAll('.theme-option').forEach(i => i.addEventListener("change", (e) => saveTheme(e.target.dataset.theme))); 
 
 
     function showConfig(show: boolean) {
@@ -86,7 +100,14 @@ import JsOnly from "./JsOnly.astro";
       }
       
     }
+
+    function selectThemeRadio(themeSlug: string) {
+      const radio = document.querySelector('#theme-radio-' + themeSlug);
+      if(radio) {
+        radio.checked = true;
+      }
+      return !!radio;
+    }
   });
-  
   
 </script>
