@@ -1,0 +1,7 @@
+---
+import ThemeRadio from "@components/themes/ThemeRadio.astro";
+import themes from "@css/themes/themes.json"
+const { selectedTheme } = Astro.props;
+let themesList = Object.entries(themes);
+---
+{themesList.map(([slug, themeName]) => <ThemeRadio slug={slug} name={themeName} checked={ selectedTheme === slug } />)}

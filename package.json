@@ -5,17 +5,27 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "static": "http-server ./dist -bg",
-    "bs": "bun run build && bun static",
-    "neocities": "bun run build && neocities push ./dist"
+    "devfr": "astro dev --config ./astro.config.fr.ts",
+    "deven": "astro dev --config ./astro.config.en.ts",
+    "buildprod": "bun buildfr && bun builden",
+    "builddev": "bun buildfr --devOutput && bun builden --devOutput",
+    "buildfr": "astro build --config ./astro.config.fr.ts",
+    "builden": "astro build --config ./astro.config.en.ts",
+    "previewfr": "astro preview --config ./astro.config.fr.ts",
+    "previewen": "astro preview --config ./astro.config.en.ts",
+    "buildalldev": "bun run builddev && bun moveassets",
+    "buildallprod": "bun run buildprod && bun moveassets",
+    "moveassets": "rm -rf ./dist/assets.sylfa.re && mkdir ./dist/assets.sylfa.re && mv ./dist/sylfa.re/assets/ ./dist/sylfa.re/fonts/ ./dist/sylfa.re/js/  ./dist/sylfa.re/themes/ ./dist/assets.sylfa.re/ && mv ./dist/en.sylfa.re/assets/* ./dist/assets.sylfa.re/assets",
+    "serveall": "concurrently 'http-server ./dist/sylfa.re --cors -gbip 4321' 'http-server ./dist/assets.sylfa.re --cors -gbip 3009' 'http-server ./dist/en.sylfa.re --cors -gbip 4324'",
+    "preview": "bun buildalldev && bun serveall",
+    "buildzip": "cd dist && zip -ru9 ../build-$(date +'%Y-%m-%d-%H-%M-%S').zip ./**/*",
+    "nekoweb": "bun buildallprod && bun buildzip && echo \"c'est terminé owo 😸\" && open https://nekoweb.org/dashboard"
   },
   "devDependencies": {
     "@types/bun": "^1.1.17",
     "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.13.0",
+    "concurrently": "^9.2.0",
     "http-server": "^14.1.1",
     "less": "^4.2.1",
     "markdown-it": "^14.1.0",
@@ -25,9 +35,11 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.11",
+    "@astrojs/rss": "4.0.12",
     "@fontsource/atkinson-hyperlegible": "^5.1.1",
-    "astro": "5.4.2",
-    "astro-compressor": "^1.0.0"
+    "astro": "5.13.0",
+    "astro-compressor": "^1.0.0",
+    "sharp": "^0.34.3",
+    "vite": "^7.1.3"
   }
 }

@@ -1,0 +1,113 @@
+---
+import ThemeRadios from "@components/themes/ThemeRadios.astro";
+import TitleBar from "@components/TitleBar.astro";
+import JsOnly from "./JsOnly.astro";
+
+const DEFAULT_THEME = "space";
+---
+  <div id="config-container" class="window hidden">
+    <JsOnly>
+      <TitleBar title="Configuration"/>
+      <div id="config" class="window-body">
+        <fieldset id="config-theme">
+          <legend>Thème</legend>
+          <ThemeRadios selected={DEFAULT_THEME} />
+        </fieldset>
+      </div>
+    </div>
+  </JsOnly>
+  <div id="theme-button-slot">
+    <JsOnly><button id="theme-toggle">Paramètres</button></JsOnly>
+  </div>
+<style lang="less">
+  @import (reference) "@css/themes.less";
+
+  #config-container {
+    display: none;
+    visibility: hidden;
+  }
+
+  #config-container {
+    display: block;
+    visibility: visible;
+  }
+
+  #config-container.hidden {
+    display: none;
+  }
+
+  #theme-toggle {
+    top: 23px;
+  }
+
+  html.theme-98 #theme-button-slot {
+    min-height: 23px;
+  }
+
+  @media (min-aspect-ratio: @aspect-ratio-mobile) {
+    #theme-toggle {
+      position: absolute;
+      align-self: flex-end;
+      right: 10px;
+      width: initial;
+    }
+  }
+  
+</style>
+
+
+<script>
+  const THEME_STORAGE_KEY = "theme";
+  const DEFAULT_THEME = "space";
+
+  function saveTheme(name: string) {
+      localStorage.setItem(THEME_STORAGE_KEY, name);
+      document.documentElement.classList.value = "theme-" + name;
+  }
+  document.addEventListener("jsonly", () => {
+    // close theme window
+    document.querySelector('#config-container [aria-label=Close]')?.addEventListener("click", e => showConfig(false));
+    
+    let isConfigOpen = false;
+
+    const configWindow = document.getElementById("config-container");
+    const themeToggle = document.getElementById("theme-toggle");
+
+    themeToggle?.addEventListener("click", () => showConfig(isConfigOpen = !isConfigOpen));
+
+    const currentTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+    // if failed to select the current theme radio, select the default one
+    if(!(currentTheme && selectThemeRadio(currentTheme))) {
+      console.debug("oh noes");
+      selectThemeRadio(DEFAULT_THEME);        
+      
+    }
+    
+    // save theme on toggle
+    document.querySelectorAll('.theme-option').forEach(i => i.addEventListener("change", (e) => saveTheme(e.target.dataset.theme))); 
+
+
+    function showConfig(show: boolean) {
+      if(configWindow && themeToggle) {
+        if(show) {
+          configWindow.classList.remove("hidden");
+          themeToggle.innerText = "Fermer";
+        } else {
+          configWindow.classList.add("hidden");
+          themeToggle.innerText = "Paramètres";
+        }
+      }
+      
+    }
+
+    function selectThemeRadio(themeSlug: string) {
+      const radio = document.querySelector('#theme-radio-' + themeSlug);
+      if(radio) {
+        radio.checked = true;
+      }
+      return !!radio;
+    }
+  });
+  
+</script>

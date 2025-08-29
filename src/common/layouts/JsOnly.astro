@@ -1,0 +1,12 @@
+---
+let content = '';
+if(Astro.slots.has('default')) {
+    content = await Astro.slots.render('default');
+    content = content.replaceAll(/(<script type="text\/html">|<z\/><\/script>)/g, "")
+        .replaceAll(/<s(cript type="module".*?)>/g, "<z$1>")
+        .replaceAll(/<\/script>/g, "</zcript>")
+        + "<z/>";
+}
+---
+<script is:raw set:html={content} type="text/html">
+</script>
