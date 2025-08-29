@@ -5,4 +5,4 @@ bun.lockb
 dist/
 .astro
 src/env.d.ts
-dist.zip
+build-*.zip

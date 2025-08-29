@@ -17,7 +17,9 @@
     "buildallprod": "bun run buildprod && bun moveassets",
     "moveassets": "rm -rf ./dist/assets.sylfa.re && mkdir ./dist/assets.sylfa.re && mv ./dist/sylfa.re/assets/ ./dist/sylfa.re/fonts/ ./dist/sylfa.re/js/  ./dist/sylfa.re/themes/ ./dist/assets.sylfa.re/ && mv ./dist/en.sylfa.re/assets/* ./dist/assets.sylfa.re/assets",
     "serveall": "concurrently 'http-server ./dist/sylfa.re --cors -gbip 4321' 'http-server ./dist/assets.sylfa.re --cors -gbip 3009' 'http-server ./dist/en.sylfa.re --cors -gbip 4324'",
-    "preview": "bun buildalldev && bun serveall"
+    "preview": "bun buildalldev && bun serveall",
+    "buildzip": "cd dist && zip -ru9 ../build-$(date +'%Y-%m-%d-%H-%M-%S').zip ./**/*",
+    "nekoweb": "bun buildallprod && bun buildzip && echo \"c'est terminé owo 😸\" && open https://nekoweb.org/dashboard"
   },
   "devDependencies": {
     "@types/bun": "^1.1.17",
