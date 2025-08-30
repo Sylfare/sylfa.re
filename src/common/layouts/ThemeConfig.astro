@@ -2,7 +2,10 @@
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
 import JsOnly from "./JsOnly.astro";
+import { useTranslations } from "../i18n/utils";
 
+
+const t = useTranslations(Astro.currentLocale);
 const DEFAULT_THEME = "space";
 ---
   <div id="config-container" class="window hidden">
@@ -10,14 +13,14 @@ const DEFAULT_THEME = "space";
       <TitleBar title="Configuration"/>
       <div id="config" class="window-body">
         <fieldset id="config-theme">
-          <legend>Thème</legend>
+          <legend>{t(a=> a.settings?.themeTitle)}</legend>
           <ThemeRadios selected={DEFAULT_THEME} />
         </fieldset>
       </div>
     </div>
   </JsOnly>
   <div id="theme-button-slot">
-    <JsOnly><button id="theme-toggle">Paramètres</button></JsOnly>
+    <JsOnly><button id="theme-toggle">{t(a => a.settings?.open)}</button></JsOnly>
   </div>
 <style lang="less">
   @import (reference) "@css/themes.less";
