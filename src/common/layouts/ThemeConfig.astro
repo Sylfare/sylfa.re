@@ -6,11 +6,13 @@ import { useTranslations } from "../i18n/utils";
 
 
 const t = useTranslations(Astro.currentLocale);
+const SETTINGS_OPEN = t(a=> a.settings?.open);
+const SETTINGS_CLOSE = t(a=> a.settings?.close);
 const DEFAULT_THEME = "space";
 ---
   <div id="config-container" class="window hidden">
     <JsOnly>
-      <TitleBar title="Configuration"/>
+      <TitleBar title={t(a=> a.settings?.title)}/>
       <div id="config" class="window-body">
         <fieldset id="config-theme">
           <legend>{t(a=> a.settings?.themeTitle)}</legend>
@@ -20,7 +22,7 @@ const DEFAULT_THEME = "space";
     </div>
   </JsOnly>
   <div id="theme-button-slot">
-    <JsOnly><button id="theme-toggle">{t(a => a.settings?.open)}</button></JsOnly>
+    <JsOnly><button id="theme-toggle" data-open={SETTINGS_OPEN} data-close={SETTINGS_CLOSE}>{SETTINGS_OPEN}</button></JsOnly>
   </div>
 <style lang="less">
   @import (reference) "@css/themes.less";
@@ -95,10 +97,10 @@ const DEFAULT_THEME = "space";
       if(configWindow && themeToggle) {
         if(show) {
           configWindow.classList.remove("hidden");
-          themeToggle.innerText = "Fermer";
+          themeToggle.innerText = themeToggle.dataset.close ?? "";
         } else {
           configWindow.classList.add("hidden");
-          themeToggle.innerText = "Paramètres";
+          themeToggle.innerText = themeToggle.dataset.open ?? "";
         }
       }
       

@@ -17,6 +17,8 @@ export type i18nComplete = {
     },
     settings: {
         open: string,
+        close: string,
+        title: string,
         themeTitle: string,
         themes: {[_ in Themes]: string},
     },
@@ -38,6 +40,8 @@ export const ui: {[_ in keyof typeof languages]: i18nKeys} = {
         },
         settings: {
             open: 'Settings',
+            close: 'Close',
+            title: "Site settings",
             themeTitle: 'Theme',
             themes: {
                 "98": "98",
@@ -58,6 +62,8 @@ export const ui: {[_ in keyof typeof languages]: i18nKeys} = {
         },
         settings: {
             open: 'Paramètres',
+            close: 'Fermer',
+            title: "Paramètres du site",
             themeTitle: 'Thème',
             themes: {
                 "98": "98",
