@@ -1,6 +1,8 @@
 ---
 import home from "@img/home.gif";
 import Navigation from "./Navigation.astro";
+import { useTranslations } from "../i18n/utils";
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<Navigation href="/" image={home} imageAlt="">Retour à l'accueil</Navigation>
+<Navigation href="/" image={home} imageAlt="">{t(a=>a.navigation?.backToHome)}</Navigation>

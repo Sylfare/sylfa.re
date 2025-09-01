@@ -1,7 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import personnages from "@img/personnages.gif";
 import Navigation from "./Navigation.astro";
+import { useTranslations } from "../i18n/utils";
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<Navigation href="/personnages" image={personnages} imageAlt="">Retour à la liste des personnages</Navigation>
+<Navigation href="/personnages" image={personnages} imageAlt="">{t(a=>a.navigation?.backToCharacters)}</Navigation>

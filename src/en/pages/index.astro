@@ -1,9 +1,29 @@
 ---
-import BasePage from "@layouts/BasePage.astro";
+import MenuButtons from "@components/MenuButtons.astro";
+import Navigation from "@components/Navigation.astro";
+import Section from "@components/Section.astro";
 import Page from "@layouts/Page.astro";
-
-
+import question from "@img/question.gif";
+import { Picture } from "astro:assets";
+import construction from "@img/construction.gif";
 ---
-<Page>
-    <p>work in progress!</p>
+<Page title="Welcome on Sylfare's armoire!">
+    <Section>
+        <p>Find a lot of things about me!</p>
+        <MenuButtons>
+            <li><Navigation href="whatisit" image={question} imageAlt="">What is this place?</Navigation></li>
+        </MenuButtons>
+    </Section>
+    <Section title="Coming next">
+        <p><Picture src={construction} alt="" />WORK IN PROGRESS</p>
+
+        <p>The English version is still new, but I'll keep updating it!</p>
+        <ul>
+            <li>a blog, wher I can share my special interests</li>
+            <li>my characters!</li>
+            <li>cool things to check</li>
+            <li>more themes</li>
+            <li>and still more silly things!</li>
+        </ul>
+    </Section>
 </Page>

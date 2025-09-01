@@ -28,6 +28,12 @@ export type i18nComplete = {
         agender: string,
         validW3C: string,
         inclusivePride: string,
+    },
+    navigation: {
+        previous: string,
+        next: string,
+        backToHome: string,
+        backToCharacters: string,
     }
 };
 
@@ -54,6 +60,12 @@ export const ui: {[_ in keyof typeof languages]: i18nKeys} = {
             agender: "agender flag - gender? no thx",
             validW3C: "validated by W3C",
             inclusivePride: "inclusive pride flag",
+        },
+        navigation: {
+            previous: "Previous",
+            next: "Next",
+            backToHome: "Back to home",
+            backToCharacters: "Back to character list"
         }
     },
     fr: {
@@ -76,6 +88,12 @@ export const ui: {[_ in keyof typeof languages]: i18nKeys} = {
             agender: "drapeau agenre - du genre ? non merci",
             validW3C: "validé par le W3C",
             inclusivePride: "drapeau progressif des fiertés",
+        },
+        navigation: {
+            previous: "Précédent",
+            next: "Suivant",
+            backToHome: "Retour à l'accueil",
+            backToCharacters: "Retour à la liste des personnages",            
         }
     }
 } as const;

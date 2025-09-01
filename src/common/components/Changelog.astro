@@ -14,7 +14,15 @@ function pad(str: string | number, length: number, character: string) {
 }
 
 function formatDate(date: Date): string {
-    return ` (${[date.getDate(), date.getMonth()+1, date.getFullYear()].filter(n => typeof n !== "undefined").map(n => pad(n, 2, '0')).join('/')})`;
+    switch (Astro.currentLocale) {
+        case "fr":
+            return `(${[date.getDate(), date.getMonth()+1, date.getFullYear()].filter(n => typeof n !== "undefined").map(n => pad(n, 2, '0')).join('/')})`;
+    
+        case "en":
+            return `(${[ date.getFullYear(), date.getDate(), date.getMonth()+1,].filter(n => typeof n !== "undefined").map(n => pad(n, 2, '0')).join('-')})`;
+        default:
+            return 'bad/date/error';
+    }
 }
 
 const { Content } = await render(changelog);
