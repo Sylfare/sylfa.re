@@ -34,6 +34,17 @@ export type i18nComplete = {
         next: string,
         backToHome: string,
         backToCharacters: string,
+    },
+    pages: {
+        trucscools: {
+            allTags: string,
+            showAllTags: string,
+            showTag: string,
+            funny: string,
+            tagSectionTitle: string,
+            permalink: string,
+            backToList: string,
+        }
     }
 };
 
@@ -66,6 +77,17 @@ export const ui: {[_ in keyof typeof languages]: i18nKeys} = {
             next: "Next",
             backToHome: "Back to home",
             backToCharacters: "Back to character list"
+        },
+        pages: {
+            trucscools: {
+                allTags: "all",
+                showAllTags: "Hey, are you looking for cool things?",
+                funny: "come here",
+                showTag: "Things with tag ",
+                tagSectionTitle: "What are you looking for?",
+                permalink: "Permalink",
+                backToList: "See other cool things",
+            }
         }
     },
     fr: {
@@ -94,6 +116,17 @@ export const ui: {[_ in keyof typeof languages]: i18nKeys} = {
             next: "Suivant",
             backToHome: "Retour à l'accueil",
             backToCharacters: "Retour à la liste des personnages",            
+        },
+        pages: {
+            trucscools: {
+                allTags: "tout",
+                funny: "viendez.",
+                showAllTags: "Vous cherchez des trucs sympas ?",
+                showTag: "Trucs avec le tag ",
+                tagSectionTitle: "Que cherchez-vous ?",
+                permalink: "Permalien",
+                backToList: "Voir d'autres trucs sympas",
+            }
         }
     }
 } as const;

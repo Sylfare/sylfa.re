@@ -3,6 +3,8 @@ import { render, type CollectionEntry } from "astro:content";
 
 import Section from '@components/Section.astro';
 import type { TrucSympa } from 'src/common/content.config';
+import { useTranslations } from "../i18n/utils";
+const t = useTranslations(Astro.currentLocale);
 
 const { truc } = Astro.props;
 type Props = {
@@ -16,7 +18,7 @@ const tags = truc.data.tags ?? [];
     <div>{ tags.map(tag => <><a href={`/trucssympas/tags/${tag}`}>#{tag}</a> </>) }</div>
     <div>
         { liens.map(([nom, href]) => <><a {href} target="_blank">{nom}</a> </>) }
-        <a href={"/trucssympas/truc/"+truc.id}>Permalien</a>
+        <a href={"/trucssympas/truc/"+truc.id}>{t(a=>a.pages?.trucscools?.permalink)}</a>
     </div>
     
     <Content />

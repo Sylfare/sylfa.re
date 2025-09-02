@@ -3,8 +3,11 @@ import Navigation from "@components/Navigation.astro";
 import SousPage from "./SousPage.astro";
 const { title } = Astro.props;
 
+import { useTranslations } from "../i18n/utils";
+const t = useTranslations(Astro.currentLocale);
+
 ---
-<SousPage title = {title}>
+<SousPage title={title}>
     <slot />
-    <Navigation href="/trucssympas">Voir d'autres trucs sympas</Navigation>
+    <Navigation href="/trucssympas">{t(a=>a.pages?.trucscools?.backToList)}</Navigation>
 </SousPage>
