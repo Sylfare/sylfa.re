@@ -36,6 +36,7 @@ export type i18nComplete = {
         next: string,
         backToHome: string,
         backToCharacters: string,
+        switchLanguage: string,
     },
     pages: {
         trucscools: {
@@ -78,7 +79,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
             previous: "Previous",
             next: "Next",
             backToHome: "Back to home",
-            backToCharacters: "Back to character list"
+            backToCharacters: "Back to character list",
+            switchLanguage: "en français"
         },
         pages: {
             trucscools: {
@@ -117,7 +119,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
             previous: "Précédent",
             next: "Suivant",
             backToHome: "Retour à l'accueil",
-            backToCharacters: "Retour à la liste des personnages",            
+            backToCharacters: "Retour à la liste des personnages",
+            switchLanguage: "in English",
         },
         pages: {
             trucscools: {

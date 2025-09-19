@@ -1,0 +1,35 @@
+---
+import { env } from "../../../astro.config.shared";
+
+import { useTranslations } from "../i18n/utils";
+
+const { links } = Astro.props; 
+const t = useTranslations(Astro.currentLocale);
+const targetLang = Astro.currentLocale === "fr" ? "en" : "fr";
+const targetDomain = {
+    "en": env.ENGLISH_BASE_URL,
+    "fr": env.FRENCH_BASE_URL,
+}[targetLang] ?? "";
+
+const targetPath = links?.[targetLang]
+---
+{targetPath &&
+<a id="switchLanguage" class="button-look" href={`${targetDomain}${targetPath}`}>
+    <span>{t(a => a.navigation?.switchLanguage)}</span>
+</a>}
+
+
+<style lang="less">
+    html.theme-98 {
+        #switchLanguage {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            width: 100%;
+            span {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+</style>

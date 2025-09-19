@@ -3,7 +3,9 @@ import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
 import JsOnly from "./JsOnly.astro";
 import { useTranslations } from "../i18n/utils";
+import SwitchLanguage from "@components/SwitchLanguage.astro";
 
+const { links } = Astro.props;
 
 const t = useTranslations(Astro.currentLocale);
 const SETTINGS_OPEN = t(a=> a.settings?.open);
@@ -19,10 +21,11 @@ const DEFAULT_THEME = "space";
           <ThemeRadios selected={DEFAULT_THEME} />
         </fieldset>
       </div>
-    </div>
-  </JsOnly>
+    </JsOnly>
+  </div>
   <div id="theme-button-slot">
     <JsOnly><button id="theme-toggle" data-open={SETTINGS_OPEN} data-close={SETTINGS_CLOSE}>{SETTINGS_OPEN}</button></JsOnly>
+    <SwitchLanguage {links} />
   </div>
 <style lang="less">
   @import (reference) "@css/themes.less";
@@ -41,8 +44,16 @@ const DEFAULT_THEME = "space";
     display: none;
   }
 
-  #theme-toggle {
-    top: 23px;
+  #theme-button-slot {
+    display: flex;
+    justify-items: right;
+    #theme-toggle {
+      flex: 5 1 auto;
+    }
+  }
+
+  :global(#switchLanguage) {
+    flex: 1 2 auto;
   }
 
   html.theme-98 #theme-button-slot {
@@ -50,7 +61,7 @@ const DEFAULT_THEME = "space";
   }
 
   @media (min-aspect-ratio: @aspect-ratio-mobile) {
-    #theme-toggle {
+    #theme-button-slot {
       position: absolute;
       align-self: flex-end;
       right: 10px;

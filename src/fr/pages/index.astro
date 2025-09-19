@@ -8,9 +8,13 @@ import personnages from "@img/personnages.gif";
 import construction from "@img/construction.gif";
 import Navigation from "@components/Navigation.astro";
 import MenuButtons from "@components/MenuButtons.astro";
+
+const links = {
+  "en": "/"
+}
 ---
 
-<Page title="Bienve&shy;nue sur le site de Sylfare !">
+<Page title="Bienve&shy;nue sur le site de Sylfare !" {links}>
   <Section>
     <p>Retrouvez tout plein de trucs sur moi !</p>
     <MenuButtons>

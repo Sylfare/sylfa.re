@@ -1,11 +1,11 @@
 ---
 import { useTranslations } from "../i18n/utils";
-const { title } = Astro.props;
+const { title, language } = Astro.props;
 
 const t = useTranslations(Astro.currentLocale);
 ---
 <!DOCTYPE html>
-<html lang="fr" class="theme-space">
+<html lang={Astro.currentLocale} class="theme-space">
   <head>
     <script src="../scripts/jsonly.js"></script>
     <script blocking="render">

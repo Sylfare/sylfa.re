@@ -6,8 +6,12 @@ import Page from "@layouts/Page.astro";
 import question from "@img/question.gif";
 import { Picture } from "astro:assets";
 import construction from "@img/construction.gif";
+
+const links = {
+    "fr": "/"
+}
 ---
-<Page title="Welcome on Sylfare's armoire!">
+<Page title="Welcome on Sylfare's armoire!" {links}>
     <Section>
         <p>Find a lot of things about me!</p>
         <MenuButtons>
