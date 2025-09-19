@@ -8,7 +8,7 @@ export default defineConfig({
     site: env.ENGLISH_BASE_URL,
     server: {port: 4324},
     i18n: {
-        locales: base.i18n?.locales,
+        locales: ["en"],
         defaultLocale: "en",
     }
 });

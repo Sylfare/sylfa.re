@@ -4,12 +4,14 @@ type RecursivePartial<T> = {
     [P in keyof T]?: RecursivePartial<T[P]>;
 };
 
-export const defaultLang = "en";
+export const defaultLang: Language = "en";
 
 export const languages = {
     en: "English",
     fr: "Français",
 }
+
+export type Language = keyof typeof languages;
 
 export type i18nComplete = {
     site: {
@@ -50,7 +52,7 @@ export type i18nComplete = {
 
 export type i18nKeys = RecursivePartial<i18nComplete>;
 
-export const ui: {[_ in keyof typeof languages]: i18nKeys} = {
+export const ui: {[_ in Language]: i18nKeys} = {
     en: {
         site: {
             title: "Sylfare's armoire",
