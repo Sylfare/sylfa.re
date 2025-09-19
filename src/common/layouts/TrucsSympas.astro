@@ -5,11 +5,11 @@ import TrucSympa from "./TrucSympa.astro";
 import PreviousNext from "@components/PreviousNext.astro";
 import { useTranslations } from "../i18n/utils";
 
-const { trucs, tag, tagCount, page, path, postCount } = Astro.props;
+const { trucs, tag, tagCount, page, path, postCount, links } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
 const title = tag ? `${t(a=>a.pages?.trucscools?.showTag)} "${tag}"` : t(a=>a.pages?.trucscools?.showAllTags);
 ---
-<SousPage {title}>
+<SousPage {title} {links}>
     {!tag && <p>{t(a=>a.pages?.trucscools?.funny)}</p>}
     <Section title={t(a=>a.pages?.trucscools?.tagSectionTitle)}>
         <a href={path}>{t(a=>a.pages?.trucscools?.allTags)} ({postCount})</a>

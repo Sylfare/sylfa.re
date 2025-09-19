@@ -4,9 +4,12 @@ import SousPage from "@layouts/SousPage.astro";
 import laugh from "@img/emotes/laugh3.gif";
 import { Picture } from "astro:assets";
 
+const links = {
+    "fr": "/cestquoi"
+}
 
 ---
-<SousPage>
+<SousPage {links}>
     <Section>
         <p>Feur! <Picture src={laugh} alt="Laughing smiley rolling on the floor" /></p></p>
         <p>... wait it does not land in English.</p>

@@ -1,11 +1,13 @@
 ---
-import SousPage from "@layouts/SousPage.astro";
-import Image from "astro/components/Image.astro";
 import Section from "@components/Section.astro";
 import laugh from "@img/emotes/laugh3.gif";
+import SousPage from "@layouts/SousPage.astro";
 import { Picture } from "astro:assets";
 
+const links = {
+    "en": "/whatisit"
+}
 ---
-<SousPage>
+<SousPage {links}>
     <Section><p>c'est feur. <Picture src={laugh} alt="Smiley qui rigole au sol" /></p></Section>    
 </SousPage>

@@ -1,9 +1,13 @@
 ---
 import Section from "@components/Section.astro";
 import SousPage from "@layouts/SousPage.astro";
+
+const links = {
+    "fr": "/remerciements"
+}
 ---
 
-<SousPage title="Big thanks to you!">
+<SousPage title="Big thanks to you!" {links}>
     <Section title="Used assets">
         <h3>Windows 98 theme</h3>
         <ul>

@@ -7,8 +7,11 @@ export const trucs = await initTrucsSympas("fr");
 export const getStaticPaths = trucs.staticPaths;
 
 const { page } = Astro.props;
+const links = {
+    "en": "/coolthings"
+};
 
 ---
-<TrucsSympas {page} postCount={trucs.postCount} trucs={page.data} tagCount={trucs.tagCount} path="/trucssympas">
+<TrucsSympas {page} postCount={trucs.postCount} trucs={page.data} tagCount={trucs.tagCount} {links} path="/trucssympas">
  
 </TrucsSympas>
