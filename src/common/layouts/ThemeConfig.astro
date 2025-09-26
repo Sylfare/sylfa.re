@@ -48,12 +48,13 @@ const DEFAULT_THEME = "space";
     display: flex;
     justify-items: right;
     #theme-toggle {
-      flex: 5 1 auto;
+      flex: 0 1 100%;
     }
   }
 
   :global(#switchLanguage) {
-    flex: 1 2 auto;
+    flex: 0 1 40%;
+    text-align: right;
   }
 
   html.theme-98 #theme-button-slot {
@@ -65,7 +66,10 @@ const DEFAULT_THEME = "space";
       position: absolute;
       align-self: flex-end;
       right: 10px;
-      width: initial;
+      width: 20%;
+    }
+    :global(#switchLanguage) {
+      flex: 0 1 100%;
     }
   }
   
