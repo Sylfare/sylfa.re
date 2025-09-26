@@ -4,7 +4,6 @@ import type { TupleType } from "typescript";
 import { i18n } from "astro:config/server";
 import { languages, type Language } from "./i18n/ui";
 
-console.debug(i18n?.defaultLocale)
 const changelog = {
     name: "changelog",
     define: (language: Language) => defineCollection({

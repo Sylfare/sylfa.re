@@ -37,6 +37,8 @@ export type i18nComplete = {
         backToHome: string,
         backToCharacters: string,
         backToCoolThings: string,
+        coolThingsPath: string,
+        coolThingsDetailPath: string,
         switchLanguage: string,
     },
     pages: {
@@ -82,6 +84,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
             backToHome: "Back to home",
             backToCharacters: "Back to character list",
             backToCoolThings: "Back to things list",
+            coolThingsDetailPath: "thing",
+            coolThingsPath: "coolthings",
             switchLanguage: "en français"
         },
         pages: {
@@ -123,6 +127,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
             backToHome: "Retour à l'accueil",
             backToCharacters: "Retour à la liste des personnages",
             backToCoolThings: "Revenir à la liste des trucs",
+            coolThingsDetailPath: "truc",
+            coolThingsPath: "trucssympas",
             switchLanguage: "in English",
         },
         pages: {

@@ -4,10 +4,15 @@ import SousPage from "./SousPage.astro";
 const { title } = Astro.props;
 
 import { useTranslations } from "../i18n/utils";
+import TrucSympa from "./TrucSympa.astro";
 const t = useTranslations(Astro.currentLocale);
-
+const mainPath = t(a=>a.navigation?.coolThingsPath);
+const { truc } = Astro.props;
 ---
-<SousPage title={title}>
-    <slot />
-    <Navigation href="/trucssympas">{t(a=>a.pages?.trucscools?.backToList)}</Navigation>
+<SousPage title={truc.data.nom}>
+    <TrucSympa {truc}></TrucSympa>
+
+    <Navigation href={`/${mainPath}`}>
+        {t(a=>a.pages?.trucscools?.backToList)}
+    </Navigation>
 </SousPage>
