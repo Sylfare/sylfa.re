@@ -28,9 +28,15 @@ export const trucsSympasTagPaths = async function ({paginate}, posts, tagCount: 
             }
     });
     return postsByTag;
-
 }
 
+export const trucsSympasDetailPaths = async function (trucs) {
+    return trucs.map(truc => ({
+        params: {id: truc.id},
+        props: {truc},
+    }));
+};
+ 
 export const trucsSympaTagsCount = function(posts: {data: {tags?: any}}[], tags: string[]): {[tag: string]: number} {
     const tagCount = Object.fromEntries(tags.map(tag => [tag, 0]));
     posts.flatMap(post => post.data.tags).forEach(tag => tag && tagCount[tag]++);
@@ -48,5 +54,6 @@ export const initTrucsSympas = async function(language: Language) {
         postCount,
         staticPaths: (async (paginate) => trucsSympasPaths(paginate, posts, tagCount, language)) satisfies GetStaticPaths,
         staticPathsTag: (async (paginate) => trucsSympasTagPaths(paginate, posts, tagCount, language)) satisfies GetStaticPaths,
+        staticPathsDetail: (async (paginate) => trucsSympasDetailPaths(posts)) satisfies GetStaticPaths,
     }
 }

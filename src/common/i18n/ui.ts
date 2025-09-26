@@ -36,6 +36,7 @@ export type i18nComplete = {
         next: string,
         backToHome: string,
         backToCharacters: string,
+        backToCoolThings: string,
         switchLanguage: string,
     },
     pages: {
@@ -80,6 +81,7 @@ export const ui: {[_ in Language]: i18nKeys} = {
             next: "Next",
             backToHome: "Back to home",
             backToCharacters: "Back to character list",
+            backToCoolThings: "Back to things list",
             switchLanguage: "en français"
         },
         pages: {
@@ -120,6 +122,7 @@ export const ui: {[_ in Language]: i18nKeys} = {
             next: "Suivant",
             backToHome: "Retour à l'accueil",
             backToCharacters: "Retour à la liste des personnages",
+            backToCoolThings: "Revenir à la liste des trucs",
             switchLanguage: "in English",
         },
         pages: {
