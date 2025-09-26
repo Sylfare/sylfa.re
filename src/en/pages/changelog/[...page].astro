@@ -2,7 +2,7 @@
 import ChangelogList from "@layouts/ChangelogList.astro";
 import { initChangelog } from "src/common/collections/changelog";
 
-export const getStaticPaths = await initChangelog("fr");
+export const getStaticPaths = await initChangelog("en");
 const { page } = Astro.props;
 
 ---
