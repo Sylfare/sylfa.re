@@ -1,0 +1,55 @@
+---
+import SousPage from "@layouts/SousPage.astro";
+import { Picture } from "astro:assets";
+import Section from "@components/Section.astro";
+import sylfare from "@banners/sylfare.gif";
+
+const links = {
+  "fr": "/genscools"
+}
+---
+
+<SousPage title="Some nice people" {links}>
+</p>
+
+  <Section title="Vali">
+    <p>
+      <a href="https://valvali.net/" target="_blank"
+        >https://valvali.net/</a>
+    </p>
+    <p>A sysadmin writing articles about his video game discoveries, in French.</p>
+    <p>
+      Also a big lover the critically acclaimed MMORPG Final Fantasy XIV with
+      a free trial, and includes the entirety of A Realm Reborn AND
+      the award-winning Heavensward and Stormblood expansions up
+      to level 70 with no restrictions on playtime (but he hates Lalafell, what a shame)
+    </p>
+
+    
+  </Section>
+  <Section title="Astrophel's Gunplas">
+    <p><a href="https://astrophelsgunpla.neocities.org/" target="_blank">
+        <img alt="Astrophel's Gunpla" src="https://astrophelsgunpla.neocities.org/assets/astro_web_button.png" width="88" height="31">
+    </a></p>
+    <p>Portfolio of a Gunpla maker</p>
+  </Section>
+
+  <Section title="Hypertouf">
+    <a href="https://radiokilledthevideostar.neocities.org/" target="_blank">https://radiokilledthevideostar.neocities.org/</a>
+    <p>soinc</p>
+  </Section>
+
+  <Section title="Armire">
+    <a href="https://armire.fr/" target="_blank">https://armire.fr/</a>
+    <p>A princess all dressed up in lolita dresses, spreading the Power of the Skirt between two 5k guesses on GeoGuessr.</p>
+    <p>One of her goals is also to take a photo of <strong>each</strong> French town sign, <a href="https://map.armire.fr/" target="_blank">of which she keeps an online map</a></p>
+  </Section>
+
+  <Section title="Sylfare">
+    <p><a href="/"><Picture src={sylfare} alt="Sylfare" width="88" height="31"/></a></p>
+    <p>
+      Someone who's modest enough to talk about themselves on their own website.
+    </p>
+    
+  </Section>
+</SousPage>

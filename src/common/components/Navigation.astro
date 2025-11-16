@@ -3,19 +3,18 @@ import { Image } from "astro:assets";
 
 const { href, image, imageAlt} = Astro.props;
 ---
-<a {href} class={href ? "" : "disabled"}>{ image && <Image src={image} alt={imageAlt} />}{image && " "}<slot /></a>
+<a {href} class={href ? "navigation" : "navigation disabled"}>{ image && <Image src={image} alt={imageAlt} />}{image && " "}<slot /></a>
 
 <style lang="less">
     @import (reference) "@css/themes.less";
 
     html.theme-98 {
-        a {
+        .navigation {
             display: flex;
             flex: 1;
             align-items: center;
             &:extend(html.theme-98 button);
             height: 64px;
-            margin: 0.5rem 0;
 
             &.disabled {
                 color: var(--button-shadow);

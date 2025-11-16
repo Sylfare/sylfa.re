@@ -1,14 +1,15 @@
+import type { AstroUserConfig } from "astro";
 import { base, env } from "./astro.config.shared";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-    ...base,
+    ...base as AstroUserConfig,
     srcDir: './src/fr',
     outDir: './dist/sylfa.re',
     site: env.FRENCH_BASE_URL,
     server: {port: 4321},
     i18n: {
-        locales: base.i18n?.locales,
+        locales: ["fr"],
         defaultLocale: "fr",
     }
 });

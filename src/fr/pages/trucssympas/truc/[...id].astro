@@ -1,22 +1,13 @@
 ---
-import Navigation from "@components/Navigation.astro";
-import SousPage from "@layouts/SousPage.astro";
-import TrucSympa from "@layouts/TrucSympa.astro";
-import { getCollection } from "astro:content";
-export async function getStaticPaths({paginate}){
-    const trucs = await getCollection('trucSympa');
-    return trucs.map(truc => ({
-        params: {id: truc.id},
-        props: {truc},
-    }));
-}
+import TrucSympaDetail from "@layouts/TrucSympaDetail.astro";
+import { initTrucsSympas } from "src/common/collections/trucssympas";
+import { useTranslations } from "src/common/i18n/utils";
+
+export const trucs = await initTrucsSympas("fr");
+export const getStaticPaths = trucs.staticPathsDetail;
+const t = useTranslations(Astro.currentLocale);
+const mainPath = t(a=>a.navigation?.coolThingsPath);
 
 const { truc } = Astro.props;
 ---
-<SousPage title={truc.data.nom}>
-    <TrucSympa {truc}></TrucSympa>
-
-    <Navigation href="/trucssympas">
-        Revenir à la liste des trucs
-    </Navigation>
-</SousPage>
+<TrucSympaDetail {truc} />

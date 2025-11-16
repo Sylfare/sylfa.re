@@ -7,67 +7,53 @@ import question from "@img/question.gif";
 import personnages from "@img/personnages.gif";
 import construction from "@img/construction.gif";
 import Navigation from "@components/Navigation.astro";
+import MenuButtons from "@components/MenuButtons.astro";
+
+const links = {
+  "en": "/"
+}
 ---
 
-<Page title="Bienve&shy;nue sur le site de Sylfare !">
-  <Section>    
-      <p>Retrouvez tout plein de trucs sur moi !</p>      
-      <ul class="nav">
-        <li><Navigation href="cestquoi" image={question} imageAlt="">C'est quoi ?</Navigation></li>
-        <li><Navigation href="personnages" image={personnages} imageAlt="">Mes personnages</Navigation></li>
-        <li><Navigation href="genscools">Des gens cools à aller voir</Navigation></li>
-        <li><Navigation href="trucssympas">Des trucs sympas à découvrir</Navigation></li>
-        <li><Navigation href="remerciements">Les remerciements</Navigation></li>
-        <li><Navigation href="changelog">La liste des changements (changelog)</Navigation></li>
-      </ul>
+<Page title="Bienve&shy;nue sur le bazar du Sylfare !" {links}>
+  <Section>
+    <p>Retrouvez tout plein de trucs sur moi !</p>
+    <MenuButtons>
+      <li>
+        <Navigation href="cestquoi" image={question} imageAlt="">C'est quoi ?</Navigation>
+      </li>
+      <li>
+        <Navigation href="personnages" image={personnages} imageAlt="">Mes personnages</Navigation>
+      </li>
+      <li>
+        <Navigation href="genscools">Des gens cools à aller voir</Navigation>
+      </li>
+      <li>
+        <Navigation href="trucssympas">Des trucs sympas à découvrir </Navigation>
+      </li>
+      <li>
+        <Navigation href="remerciements">Les remerciements</Navigation>
+      </li>
+      <li>
+        <Navigation href="changelog">La liste des changements (changelog)</Navigation>
+      </li>
+    </MenuButtons>
   </Section>
 
   <Section title="Trucs prévus">
     <p><Picture src={construction} alt="" />SITE EN CONSTRUCTION</p>
-    <p>J'ai l'intention de mettre plein de trucs sur ce site !! Entre autres :</p>
+    <p>
+      J'ai l'intention de mettre plein de trucs sur ce site !! Entre autres :
+    </p>
     <ul>
-      <li>un blog !! où je pourrai partager mes dernières passions du moment</li>
-      <li>plus de pages sur mes personnages, j'en parle moins ces derniers temps mais iels existent encore !</li>
-      <li>un annuaire de liens et applis cools</li>
+      <li>
+        un blog !! où je pourrai partager mes dernières passions du moment
+      </li>
+      <li>
+        plus de pages sur mes personnages, j'en parle moins ces derniers temps
+        mais iels existent encore !
+      </li>
       <li>encore plus de thèmes</li>
       <li>et plus encore !</li>
     </ul>
   </Section>
-  
 </Page>
-
-<style lang="less">
-  @import (reference) "@css/themes.less";
-
-  @media (max-width: @size-mobile) and (max-aspect-ratio: @aspect-ratio-mobile) {
-    .nav {
-      padding-left: 0;
-    }
-
-    .nav li {
-      width: 100%;
-    } 
-  }
-
-  // TODO mobile-first
-  @media (min-width: @size-mobile) and (min-aspect-ratio: @aspect-ratio-mobile) {
-    .nav {
-      gap: 1rem;
-    }
-  }
-
-  html.theme-98 {
-    .nav {
-      display: flex;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav li {
-      list-style: none;
-      display: flex;
-    }
-  }
-</style>

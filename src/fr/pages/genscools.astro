@@ -3,9 +3,13 @@ import SousPage from "@layouts/SousPage.astro";
 import { Picture } from "astro:assets";
 import Section from "@components/Section.astro";
 import sylfare from "@banners/sylfare.gif";
+
+const links = {
+  "en": "/nicepeople"
+};
 ---
 
-<SousPage title="Des gens cools">
+<SousPage title="Des gens cools" {links}>
   <p>Parce qu'iels mérient de l'appréciation</p>
 
   <Section title="Vali">
@@ -36,11 +40,16 @@ import sylfare from "@banners/sylfare.gif";
     <p>soinc</p>
   </Section>
 
+  <Section title="Armire">
+    <a href="https://armire.fr/" target="_blank">https://armire.fr/</a>
+    <p>Une princesse en robe lolita, qui répand le Pouvoir de la Jupe entre deux 5k sur GeoGuessr.</p>
+    <p>Un de ses objectifs est également de prendre en photo <strong>tous</strong> les panneaux d'entrée de villes françaises, <a href="https://map.armire.fr/" target="_blank">dont elle tient une carte en ligne</a></p>
+  </Section>
+
   <Section title="Sylfare">
     <p><a href="/"><Picture src={sylfare} alt="Sylfare" width="88" height="31"/></a></p>
     <p>
       Une personne absolument modeste pour parler d'ellui sur son propre site
     </p>
-    
   </Section>
 </SousPage>

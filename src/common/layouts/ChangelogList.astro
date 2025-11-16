@@ -1,0 +1,12 @@
+---
+import PreviousNext from "@components/PreviousNext.astro";
+import SousPage from "./SousPage.astro";
+import Changelog from "@components/Changelog.astro";
+
+const { page } = Astro.props;
+---
+
+<SousPage title={`Changelog${(page.currentPage > 1) ? " - page " + page.currentPage : ""}`}>
+    { page.data.map(log => <Changelog changelog={log}/>) }
+    <PreviousNext {page} />
+</SousPage>

@@ -2,7 +2,10 @@
 import { custom } from "astro:schema";
 import Navigation from "./Navigation.astro";
 import NavPage from "./NavPage.astro";
-const { page } = Astro.props;
+import { useTranslations } from "../i18n/utils";
+const { page } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+
 
 let numerosAffiches: number[] = [];
 const range = 7
@@ -31,7 +34,7 @@ const showRightEllipsis = current <= page.lastPage - range;
 ---
 {(page.url.prev || page.url.next) && 
 <div id="boutonsNavigation">
-    <Navigation href={page.url.prev} class="prevNext" id="prev">Précédent</Navigation>
+    <Navigation href={page.url.prev} class="prevNext" id="prev">{t(a=>a.navigation?.previous)}</Navigation>
     
     <div class="pageSelect">
         {showLeftEllipsis && <><NavPage number="1" currentPageUrl={page.url.current} currentPageNumber={page.currentPage}>1</NavPage><NavPage>...</NavPage></>}
@@ -56,6 +59,7 @@ const showRightEllipsis = current <= page.lastPage - range;
             grid-template-columns: 2fr 3fr 2fr;
             width: 100%;
             justify-content: space-around;
+            margin: .5em 0;
         }
 
         .navPage {

@@ -1,33 +1,15 @@
 ---
 import TrucsSympas from "@layouts/TrucsSympas.astro";
 import { getCollection } from 'astro:content';
+import { initTrucsSympas } from "src/common/collections/trucssympas";
+import type { Language } from "src/common/i18n/ui";
 
 
-export async function getStaticPaths ({paginate}) {
-    const posts = await getCollection('trucSympa');
-    const tags = [...new Set(posts.flatMap(truc => truc.data.tags))];
-    const tagCount = Object.fromEntries(tags.map(tag => [tag, 0]));
-    posts.flatMap(post => post.data.tags).forEach(tag => tag && tagCount[tag]++);
+export const trucs = await initTrucsSympas("fr");
+export const getStaticPaths = trucs.staticPathsTag;
 
-    const postsTries = posts.sort((a, b) => new Intl.Collator('fr').compare(a.data.nom, b.data.nom));
-
-    const postsByTag = tags.flatMap(tag => {
-        if(tag) {
-            const filteredPosts = postsTries.filter(truc => truc.data.tags?.includes(tag));
-            return paginate(filteredPosts, {
-                params: { tag },
-                props: { tagCount },
-                pageSize: 10
-            });
-        } else {
-            return null;
-        }
-    });
-    return postsByTag;
-}
-let { tag } = Astro.params;
-
-let { page, tagCount } = Astro.props;
+const { tag } = Astro.params;
+const { page, tagCount } = Astro.props;
 ---
-<TrucsSympas {tag} {tagCount} {page} trucs={page.data}>
+<TrucsSympas { tag } postCount={trucs.postCount} {tagCount} {page} trucs={page.data} path="/trucssympas">
 </TrucsSympas>

@@ -1,0 +1,16 @@
+---
+import TrucsSympas from '@layouts/TrucsSympas.astro';
+import { initTrucsSympas } from 'src/common/collections/trucssympas';
+
+export const trucs = await initTrucsSympas("en");
+export const getStaticPaths = trucs.staticPaths;
+
+const { page } = Astro.props;
+const links = {
+    "fr": "/trucssympas"
+};
+
+---
+<TrucsSympas {page} postCount={trucs.postCount} trucs={page.data} tagCount={trucs.tagCount} path="/coolthings" {links}>
+ 
+</TrucsSympas>

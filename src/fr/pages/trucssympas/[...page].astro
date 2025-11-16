@@ -1,27 +1,17 @@
 ---
 import TrucsSympas from '@layouts/TrucsSympas.astro';
-import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
+import { initTrucsSympas } from 'src/common/collections/trucssympas';
+import type { Language } from 'src/common/i18n/ui';
 
-export const getStaticPaths = (async (paginate) => {
-    const trucsSympas = await getCollection('trucSympa');
-    const trucsTries = trucsSympas.sort((a, b) => new Intl.Collator('fr').compare(a.data.nom, b.data.nom));
-
-    return paginate.paginate(trucsTries, {pageSize: 10});
-}) satisfies GetStaticPaths;
-
-const trucsSympas = await getCollection('trucSympa');
-const tags: {
-    [index: string]: number
-} = {}
-
-trucsSympas.forEach(truc => truc.data.tags?.forEach(tag => 
-    Object.hasOwn(tags, tag) ? tags[tag]++ : (tags[tag] = 1)
-));
+export const trucs = await initTrucsSympas("fr");
+export const getStaticPaths = trucs.staticPaths;
 
 const { page } = Astro.props;
+const links = {
+    "en": "/coolthings"
+};
 
 ---
-<TrucsSympas {page} trucs={page.data} tagCount={tags}>
-
+<TrucsSympas {page} postCount={trucs.postCount} trucs={page.data} tagCount={trucs.tagCount} {links} path="/trucssympas">
+ 
 </TrucsSympas>

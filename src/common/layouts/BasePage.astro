@@ -1,9 +1,11 @@
 ---
-import JsOnly from "./JsOnly.astro";
-const { title } = Astro.props;
+import { useTranslations } from "../i18n/utils";
+const { title, language } = Astro.props;
+
+const t = useTranslations(Astro.currentLocale);
 ---
 <!DOCTYPE html>
-<html lang="fr" class="theme-space">
+<html lang={Astro.currentLocale} class="theme-space">
   <head>
     <script src="../scripts/jsonly.js"></script>
     <script blocking="render">
@@ -13,7 +15,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="alternate" href={new URL("feeds/changelog.xml", Astro.url )} type="application/rss+xml" title="RSS">
-    <title>Le site de Sylfare</title>
+    <title>{t(a=>a.site?.title)}</title>
   </head>
   <body>
     <slot />

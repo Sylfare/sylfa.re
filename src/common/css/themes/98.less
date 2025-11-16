@@ -2,38 +2,41 @@
 @not-theme-98: html:not(.theme-98);
 @svg-data: 'image/svg+xml;charset=UTF-8';
 
+@plugin "../plugins/assets";
+
 @font-face {
   font-family: "Pixelated MS Sans Serif";
-  src: url("/fonts/ms_sans_serif.woff") format("woff");
-  src: url("/fonts/ms_sans_serif.woff2") format("woff2");
+  src: asset("/fonts/ms_sans_serif.woff") format("woff");
+  src: asset("/fonts/ms_sans_serif.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Pixelated MS Sans Serif";
-  src: url("/fonts/ms_sans_serif_bold.woff") format("woff");
-  src: url("/fonts/ms_sans_serif_bold.woff2") format("woff2");
+  src: asset("/fonts/ms_sans_serif_bold.woff") format("woff");
+  src: asset("/fonts/ms_sans_serif_bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'W95font';
-  src: url('/fonts/w95font.woff2') format('woff2'),
-       url('/fonts/w95font.woff2') format('woff');
+  src: asset('/fonts/w95font.woff2') format('woff2'),
+       asset('/fonts/w95font.woff2') format('woff');
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'W95font';
-  src: url('/fonts/w95font-bold.woff2') format('woff2'),
-       url('/fonts/w95font-bold.woff2') format('woff');
+  src: asset('/fonts/w95font-bold.woff2') format('woff2'),
+       asset('/fonts/w95font-bold.woff2') format('woff');
   font-weight: bold;
 
 }
 
 html.theme-98 {
+
     & {
         /* Color */
         --text-color: #222222;
@@ -135,6 +138,7 @@ html.theme-98 {
       ul.tree-view,
       .window,
       .title-bar,
+      .button-look,
       li[role=tab],
       main > p {
         font-family: "W95font", Arial;
@@ -177,7 +181,8 @@ html.theme-98 {
       
       button,
       input[type="submit"],
-      input[type="reset"] {
+      input[type="reset"],
+      .button-look {
         box-sizing: border-box;
         border: none;
         color: transparent;
@@ -307,21 +312,21 @@ html.theme-98 {
       
       .title-bar-controls button[aria-label="Minimize"],
       .title-bar-controls button[aria-label].minimize {
-        background-image: data-uri(@svg-data, "/themes/98/icon/minimize.svg");
+        background-image: asset("/themes/98/icon/minimize.svg");
         background-repeat: no-repeat;
         background-position: bottom 3px left 4px;
       }
       
       .title-bar-controls button[aria-label="Maximize"],
       .title-bar-controls button[aria-label].maximize {
-        background-image: data-uri(@svg-data, "/themes/98/icon/maximize.svg");
+        background-image: asset("/themes/98/icon/maximize.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 3px;
       }
       
       .title-bar-controls button[aria-label="Maximize"]:disabled,
       .title-bar-controls button[aria-label].maximize:disabled {
-        background-image: data-uri(@svg-data, "/themes/98/icon/maximize-disabled.svg");
+        background-image: asset("/themes/98/icon/maximize-disabled.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 3px;
       }
@@ -329,14 +334,14 @@ html.theme-98 {
       .title-bar-controls button[aria-label="Restore"],
       .title-bar-controls button[aria-label].restore,
       .window-maximized .title-bar-controls button[aria-label="Maximize"] {
-        background-image: data-uri(@svg-data, "/themes/98/icon/restore.svg");
+        background-image: asset("/themes/98/icon/restore.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 3px;
       }
       
       .title-bar-controls button[aria-label="Help"],
       .title-bar-controls button[aria-label].help {
-        background-image: data-uri(@svg-data, "/themes/98/icon/help.svg");
+        background-image: asset("/themes/98/icon/help.svg");
         background-repeat: no-repeat;
         background-position: top 2px left 5px;
       }
@@ -344,7 +349,7 @@ html.theme-98 {
       .title-bar-controls button[aria-label="Close"],
       .title-bar-controls button[aria-label].close {
         margin-left: 2px;
-        background-image: data-uri(@svg-data, "/themes/98/icon/close.svg");
+        background-image: asset("/themes/98/icon/close.svg");
         background-repeat: no-repeat;
         background-position: top 3px left 4px;
       }
@@ -367,7 +372,7 @@ html.theme-98 {
       }
       
       fieldset {
-        border-image: data-uri(@svg-data, "/themes/98/icon/groupbox-border.svg") 2;
+        border-image: asset("/themes/98/icon/groupbox-border.svg") 2;
         padding: calc(2 * var(--border-width) + var(--element-spacing));
         padding-block-start: var(--element-spacing);
         margin: 0;
@@ -435,11 +440,11 @@ html.theme-98 {
         width: var(--radio-width);
         height: var(--radio-width);
         margin-right: var(--radio-label-spacing);
-        background: data-uri(@svg-data, "/themes/98/icon/radio-border.svg");
+        background: asset("/themes/98/icon/radio-border.svg");
       }
       
       input[type="radio"]:active + label::before {
-        background: data-uri(@svg-data, "/themes/98/icon/radio-border-disabled.svg");
+        background: asset("/themes/98/icon/radio-border-disabled.svg");
       }
       
       input[type="radio"]:checked + label::after {
@@ -450,7 +455,7 @@ html.theme-98 {
         top: var(--radio-dot-top);
         left: var(--radio-dot-left);
         position: absolute;
-        background: data-uri(@svg-data, "/themes/98/icon/radio-dot.svg");
+        background: asset("/themes/98/icon/radio-dot.svg");
       }
       
       input[type="radio"]:focus + label,
@@ -459,11 +464,11 @@ html.theme-98 {
       }
       
       input[type="radio"][disabled] + label::before {
-        background: data-uri(@svg-data, "/themes/98/icon/radio-border-disabled.svg");
+        background: asset("/themes/98/icon/radio-border-disabled.svg");
       }
       
       input[type="radio"][disabled]:checked + label::after {
-        background: data-uri(@svg-data, "/themes/98/icon/radio-dot-disabled.svg");
+        background: asset("/themes/98/icon/radio-dot-disabled.svg");
       }
       
       input[type="checkbox"] + label {
@@ -496,7 +501,7 @@ html.theme-98 {
         left: calc(
           -1 * (var(--checkbox-total-width-precalc)) + var(--checkmark-left)
         );
-        background: data-uri(@svg-data, "/themes/98/icon/checkmark.svg");
+        background: asset("/themes/98/icon/checkmark.svg");
       }
       
       input[type="checkbox"][disabled] + label::before {
@@ -504,7 +509,7 @@ html.theme-98 {
       }
       
       input[type="checkbox"][disabled]:checked + label::after {
-        background: data-uri(@svg-data, "/themes/98/icon/checkmark-disabled.svg");
+        background: asset("/themes/98/icon/checkmark-disabled.svg");
       }
       
       input[type="text"],
@@ -579,7 +584,7 @@ html.theme-98 {
         -moz-appearance: none;
         position: relative;
         padding-right: 32px;
-        background-image: data-uri(@svg-data, "/themes/98/icon/button-down.svg");
+        background-image: asset("/themes/98/icon/button-down.svg");
         background-position: top 2px right 2px;
         background-repeat: no-repeat;
         border-radius: 0;
@@ -610,14 +615,14 @@ html.theme-98 {
         -webkit-appearance: none;
         height: 21px;
         width: 11px;
-        background: data-uri(@svg-data, "/themes/98/icon/indicator-horizontal.svg");
+        background: asset("/themes/98/icon/indicator-horizontal.svg");
         transform: translateY(-8px);
         box-shadow: none;
         border: none;
       }
       
       input[type="range"].has-box-indicator::-webkit-slider-thumb {
-        background: data-uri(@svg-data, "/themes/98/icon/indicator-rectangle-horizontal.svg");
+        background: asset("/themes/98/icon/indicator-rectangle-horizontal.svg");
         transform: translateY(-10px);
       }
       
@@ -626,12 +631,12 @@ html.theme-98 {
         width: 11px;
         border: 0;
         border-radius: 0;
-        background: data-uri(@svg-data, "/themes/98/icon/indicator-horizontal.svg");
+        background: asset("/themes/98/icon/indicator-horizontal.svg");
         transform: translateY(2px);
       }
       
       input[type="range"].has-box-indicator::-moz-range-thumb {
-        background: data-uri(@svg-data, "/themes/98/icon/indicator-rectangle-horizontal.svg");
+        background: asset("/themes/98/icon/indicator-rectangle-horizontal.svg");
         transform: translateY(0px);
       }
       
@@ -715,7 +720,7 @@ html.theme-98 {
       }
       
       select:active {
-        background-image: data-uri(@svg-data, "/themes/98/icon/button-down-active.svg");
+        background-image: asset("/themes/98/icon/button-down-active.svg");
       }
       
       a {
@@ -851,7 +856,7 @@ html.theme-98 {
       }
       
       ::-webkit-scrollbar-track {
-        background-image: data-uri(@svg-data, "/themes/98/icon/scrollbar-background.svg");
+        background-image: asset("/themes/98/icon/scrollbar-background.svg");
       }
       
       ::-webkit-scrollbar-thumb {
@@ -868,19 +873,19 @@ html.theme-98 {
       
       ::-webkit-scrollbar-button:vertical:start {
         height: 17px;
-        background-image: data-uri(@svg-data, "/themes/98/icon/button-up.svg");
+        background-image: asset("/themes/98/icon/button-up.svg");
       }
       ::-webkit-scrollbar-button:vertical:end {
         height: 17px;
-        background-image: data-uri(@svg-data, "/themes/98/icon/button-down.svg");
+        background-image: asset("/themes/98/icon/button-down.svg");
       }
       ::-webkit-scrollbar-button:horizontal:start {
         width: 16px;
-        background-image: data-uri(@svg-data, "/themes/98/icon/button-left.svg");
+        background-image: asset("/themes/98/icon/button-left.svg");
       }
       ::-webkit-scrollbar-button:horizontal:end {
         width: 16px;
-        background-image: data-uri(@svg-data, "/themes/98/icon/button-right.svg");
+        background-image: asset("/themes/98/icon/button-right.svg");
       }
       
       .window[role=tabpanel] {
@@ -933,7 +938,7 @@ html.theme-98 {
       .sunken-panel {
         box-sizing: border-box;
         border: 2px groove transparent;
-        border-image: data-uri(@svg-data, "/themes/98/icon/sunken-panel-border.svg") 2;
+        border-image: asset("/themes/98/icon/sunken-panel-border.svg") 2;
         overflow: auto;
         background-color: #fff;
       }

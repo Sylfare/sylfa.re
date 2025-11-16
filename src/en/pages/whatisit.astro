@@ -1,0 +1,19 @@
+---
+import Section from "@components/Section.astro";
+import SousPage from "@layouts/SousPage.astro";
+import laugh from "@img/emotes/laugh3.gif";
+import { Picture } from "astro:assets";
+
+const links = {
+    "fr": "/cestquoi"
+}
+
+---
+<SousPage {links}>
+    <Section>
+        <p>Feur! <Picture src={laugh} alt="Laughing smiley rolling on the floor" /></p></p>
+        <p>... wait it does not land in English.</p>
+        <p>This page's French version is based on a pun: when someone asks a question with "Quoi ?" (what ?), a funny person may answer "feur" to make it sound like "coiffeur" (hairdresser).</p>
+        <p>There's probably some English equivalents, but I don't know any of them.</p>
+    </Section>
+</SousPage>

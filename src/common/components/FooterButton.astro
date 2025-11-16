@@ -1,0 +1,22 @@
+---
+import { getImage, Picture } from "astro:assets";
+import type { Buttons } from "../i18n/utils";
+import { useTranslations } from "../i18n/utils";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+    name: Buttons,
+    image: ImageMetadata,
+    href?: string,
+    alt?: string,
+};
+
+const { name, image, href, alt} = Astro.props;
+
+const LinkTag = href ? "a" : Fragment;
+const t = useTranslations(Astro.currentLocale);
+const imageAlt = alt ?? t(a=> a.buttons?.[name]) ?? "";
+---
+<LinkTag href={href} target="_blank">
+    <Picture src={image} alt={imageAlt} title={imageAlt}></Picture>
+</LinkTag>

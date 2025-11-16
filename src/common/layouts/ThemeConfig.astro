@@ -2,22 +2,30 @@
 import ThemeRadios from "@components/themes/ThemeRadios.astro";
 import TitleBar from "@components/TitleBar.astro";
 import JsOnly from "./JsOnly.astro";
+import { useTranslations } from "../i18n/utils";
+import SwitchLanguage from "@components/SwitchLanguage.astro";
 
+const { links } = Astro.props;
+
+const t = useTranslations(Astro.currentLocale);
+const SETTINGS_OPEN = t(a=> a.settings?.open);
+const SETTINGS_CLOSE = t(a=> a.settings?.close);
 const DEFAULT_THEME = "space";
 ---
   <div id="config-container" class="window hidden">
     <JsOnly>
-      <TitleBar title="Configuration"/>
+      <TitleBar title={t(a=> a.settings?.title)}/>
       <div id="config" class="window-body">
         <fieldset id="config-theme">
-          <legend>Thème</legend>
+          <legend>{t(a=> a.settings?.themeTitle)}</legend>
           <ThemeRadios selected={DEFAULT_THEME} />
         </fieldset>
       </div>
-    </div>
-  </JsOnly>
+    </JsOnly>
+  </div>
   <div id="theme-button-slot">
-    <JsOnly><button id="theme-toggle">Paramètres</button></JsOnly>
+    <JsOnly><button id="theme-toggle" data-open={SETTINGS_OPEN} data-close={SETTINGS_CLOSE}>{SETTINGS_OPEN}</button></JsOnly>
+    <SwitchLanguage {links} />
   </div>
 <style lang="less">
   @import (reference) "@css/themes.less";
@@ -36,8 +44,17 @@ const DEFAULT_THEME = "space";
     display: none;
   }
 
-  #theme-toggle {
-    top: 23px;
+  #theme-button-slot {
+    display: flex;
+    justify-items: right;
+    #theme-toggle {
+      flex: 0 1 100%;
+    }
+  }
+
+  :global(#switchLanguage) {
+    flex: 0 1 40%;
+    text-align: right;
   }
 
   html.theme-98 #theme-button-slot {
@@ -45,11 +62,14 @@ const DEFAULT_THEME = "space";
   }
 
   @media (min-aspect-ratio: @aspect-ratio-mobile) {
-    #theme-toggle {
+    #theme-button-slot {
       position: absolute;
       align-self: flex-end;
       right: 10px;
-      width: initial;
+      width: 20%;
+    }
+    :global(#switchLanguage) {
+      flex: 0 1 100%;
     }
   }
   
@@ -92,10 +112,10 @@ const DEFAULT_THEME = "space";
       if(configWindow && themeToggle) {
         if(show) {
           configWindow.classList.remove("hidden");
-          themeToggle.innerText = "Fermer";
+          themeToggle.innerText = themeToggle.dataset.close ?? "";
         } else {
           configWindow.classList.add("hidden");
-          themeToggle.innerText = "Paramètres";
+          themeToggle.innerText = themeToggle.dataset.open ?? "";
         }
       }
       

@@ -1,0 +1,13 @@
+---
+import TrucSympaDetail from "@layouts/TrucSympaDetail.astro";
+import { initTrucsSympas } from "src/common/collections/trucssympas";
+import { useTranslations } from "src/common/i18n/utils";
+
+export const trucs = await initTrucsSympas("en");
+export const getStaticPaths = trucs.staticPathsDetail;
+const t = useTranslations(Astro.currentLocale);
+const mainPath = t(a=>a.navigation?.coolThingsPath);
+
+const { truc } = Astro.props;
+---
+<TrucSympaDetail {truc} />
