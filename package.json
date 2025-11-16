@@ -23,11 +23,12 @@
   },
   "devDependencies": {
     "@types/bun": "^1.1.17",
+    "@types/less": "^3.0.8",
     "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.13.0",
     "concurrently": "^9.2.0",
     "http-server": "^14.1.1",
-    "less": "^4.2.1",
+    "less": "^4.4.1",
     "markdown-it": "^14.1.0",
     "sanitize-html": "^2.14.0"
   },

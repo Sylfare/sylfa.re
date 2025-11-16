@@ -1,8 +1,9 @@
+import type { AstroUserConfig } from "astro";
 import { base, env } from "./astro.config.shared";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-    ...base,
+    ...base as AstroUserConfig,
     srcDir: './src/fr',
     outDir: './dist/sylfa.re',
     site: env.FRENCH_BASE_URL,
