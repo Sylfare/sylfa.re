@@ -68,7 +68,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
             themeTitle: 'Theme',
             themes: {
                 "98": "98",
-                "space": "Space"
+                "space": "Space",
+                "ds": "DS"
             },
         },
         buttons: {
@@ -112,6 +113,7 @@ export const ui: {[_ in Language]: i18nKeys} = {
             themes: {
                 "98": "98",
                 "space": "Espace",
+                "ds": "DS"
             }
         },
         buttons: {
