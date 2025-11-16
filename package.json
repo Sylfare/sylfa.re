@@ -36,9 +36,9 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@astrojs/rss": "4.0.12",
+    "@astrojs/rss": "4.0.13",
     "@fontsource/atkinson-hyperlegible": "^5.1.1",
-    "astro": "5.14.0",
+    "astro": "5.15.8",
     "astro-compressor": "^1.0.0",
     "sharp": "^0.34.3",
     "vite": "^7.1.3"
