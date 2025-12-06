@@ -1,0 +1,9 @@
+---
+import BlogList from "@layouts/BlogList.astro";
+import { initBlog } from "src/common/collections/blog";
+
+export const getStaticPaths = await initBlog("en");
+const { page } = Astro.props;
+---
+
+<BlogList {page} />

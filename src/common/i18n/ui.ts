@@ -50,6 +50,9 @@ export type i18nComplete = {
             tagSectionTitle: string,
             permalink: string,
             backToList: string,
+        },
+        blog: {
+            seeMore: string,
         }
     }
 };
@@ -97,6 +100,9 @@ export const ui: {[_ in Language]: i18nKeys} = {
                 tagSectionTitle: "What are you looking for?",
                 permalink: "Permalink",
                 backToList: "See other cool things",
+            },
+            blog: {
+                seeMore: "See more"
             }
         }
     },
@@ -140,6 +146,9 @@ export const ui: {[_ in Language]: i18nKeys} = {
                 tagSectionTitle: "Que cherchez-vous ?",
                 permalink: "Permalien",
                 backToList: "Voir d'autres trucs sympas",
+            },
+            blog: {
+                seeMore: "Voir plus",
             }
         }
     }

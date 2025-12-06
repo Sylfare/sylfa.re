@@ -31,7 +31,20 @@ const trucSympa = {
     }),
 };
 
-export const collections = Object.fromEntries([ trucSympa, changelog ]
+const blog = {
+    name: "blog",
+    define: (language: Language) => defineCollection({
+        loader: glob({pattern: "**/*.md", base: `./src/${language}/blog`}),
+        schema: z.object({
+            titre: z.string(),
+            tags: z.array(z.string()).optional(),
+            datePublication: z.date(),
+            resume: z.string().optional(),
+        })
+    }),
+}
+
+export const collections = Object.fromEntries([ trucSympa, changelog, blog ]
     .flatMap(collection => Object.keys(languages)
         .map(language => [
                 `${collection.name}-${language}`,
@@ -58,4 +71,11 @@ export type TrucSympa = {
     tags?: string[],
     content: string,
     liens: {[index: string]: string}
-}
+};
+
+export type ArticleBlog = {
+    titre: string,
+    tags?: string[],
+    datePublication: Date,
+    resume?: string,
+};
