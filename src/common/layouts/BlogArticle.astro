@@ -1,0 +1,22 @@
+---
+import Navigation from "@components/Navigation.astro";
+import Page from "./Page.astro";
+import Section from "@components/Section.astro";
+import type { CollectionEntry } from "astro:content";
+import { useTranslations } from "../i18n/utils";
+import { render } from "astro:content";
+
+export type Props = {
+    post: CollectionEntry<'blog-fr'>
+};
+const {post} = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const {Content} = await render(post);
+
+---
+<Page title={post.data.titre}>
+    <Section >
+        <Content />
+    </Section>
+    <Navigation href={`/${t(a=>a.navigation?.blogPath)}`}>{t(a=>a.pages?.blog?.backToList)}</Navigation>
+</Page>

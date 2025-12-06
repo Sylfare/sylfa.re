@@ -8,10 +8,11 @@ type Props = {
 }
 const { article } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
+const mainPath = t(a=>a.navigation?.blogArticlePath);
 
 ---
 
 <Section title={article.data.titre}>
     {article.data.resume && <p>{article.data.resume}</p>}
-    <Navigation>{t(a => a.pages?.blog?.seeMore)}</Navigation>
+    <Navigation href={`/${mainPath}/${article.id}`}>{t(a => a.pages?.blog?.seeMore)}</Navigation>
 </Section>

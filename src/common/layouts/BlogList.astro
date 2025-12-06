@@ -1,8 +1,12 @@
 ---
 import BlogArticlePreview from "@components/BlogArticlePreview.astro";
 import SousPage from "./SousPage.astro";
+import { useTranslations } from "../i18n/utils";
 
 const { page } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+
+
 ---
 <SousPage >
     { page.data.map(article => <BlogArticlePreview {article}/> )}

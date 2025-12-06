@@ -39,6 +39,8 @@ export type i18nComplete = {
         backToCoolThings: string,
         coolThingsPath: string,
         coolThingsDetailPath: string,
+        blogPath: string,
+        blogArticlePath: string,
         switchLanguage: string,
     },
     pages: {
@@ -53,6 +55,7 @@ export type i18nComplete = {
         },
         blog: {
             seeMore: string,
+            backToList: string,
         }
     }
 };
@@ -89,6 +92,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
             backToCoolThings: "Back to things list",
             coolThingsDetailPath: "thing",
             coolThingsPath: "coolthings",
+            blogPath: "blog",
+            blogArticlePath: "blog/post",
             switchLanguage: "en français"
         },
         pages: {
@@ -102,7 +107,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
                 backToList: "See other cool things",
             },
             blog: {
-                seeMore: "See more"
+                seeMore: "See more",
+                backToList: "Back to articles"
             }
         }
     },
@@ -135,6 +141,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
             backToCoolThings: "Revenir à la liste des trucs",
             coolThingsDetailPath: "truc",
             coolThingsPath: "trucssympas",
+            blogPath: "blog",
+            blogArticlePath: "blog/post",
             switchLanguage: "in English",
         },
         pages: {
@@ -149,6 +157,7 @@ export const ui: {[_ in Language]: i18nKeys} = {
             },
             blog: {
                 seeMore: "Voir plus",
+                backToList: "Retour aux articles",
             }
         }
     }
