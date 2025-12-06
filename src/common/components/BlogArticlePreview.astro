@@ -12,5 +12,6 @@ const t = useTranslations(Astro.currentLocale);
 ---
 
 <Section title={article.data.titre}>
+    {article.data.resume && <p>{article.data.resume}</p>}
     <Navigation>{t(a => a.pages?.blog?.seeMore)}</Navigation>
 </Section>
