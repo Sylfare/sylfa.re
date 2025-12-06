@@ -1,0 +1,8 @@
+---
+import Section from "@components/Section.astro";
+
+const { perso } = Astro.props;
+---
+<Section title={perso.data.nom}>
+    <h2>{perso.data.nom}</h2>
+</Section>

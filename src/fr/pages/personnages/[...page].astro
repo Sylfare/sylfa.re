@@ -1,0 +1,15 @@
+---
+import CharacterButton from "@components/character/CharacterButton.astro";
+import Section from "@components/Section.astro";
+import Personnage from "@layouts/Personnage.astro";
+import SousPage from "@layouts/SousPage.astro";
+import { initPersonnages } from "src/common/collections/personnages";
+export const getStaticPaths = await initPersonnages("fr");
+
+const { page } = Astro.props;
+---
+<SousPage title="Mes personnages">
+    <Section>
+        { page.data.map(perso => <CharacterButton personnage={perso}></CharacterButton>) }
+    </Section>      
+</SousPage>

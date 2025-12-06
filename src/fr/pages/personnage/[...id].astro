@@ -1,0 +1,15 @@
+---
+import CharacterInfo from "@layouts/character/CharacterInfo.astro";
+import Personnage from "@layouts/Personnage.astro";
+import { initPersonnages } from "src/common/collections/personnages";
+
+export const persos = await initPersonnages("fr");
+export const getStaticPaths = persos.personnage;
+
+const { perso } = Astro.props;
+// console.log( perso );
+---
+<Personnage>
+    
+    <CharacterInfo {perso} />
+</Personnage>

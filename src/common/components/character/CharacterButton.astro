@@ -1,0 +1,6 @@
+---
+import Navigation from "@components/Navigation.astro";
+
+const { personnage } = Astro.props;
+---
+<Navigation href="#">{personnage.data.nom}</Navigation>
