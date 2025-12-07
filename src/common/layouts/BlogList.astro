@@ -8,6 +8,6 @@ const t = useTranslations(Astro.currentLocale);
 
 
 ---
-<SousPage >
+<SousPage title={`${t(a=>a.pages?.blog?.title)}${(page.currentPage > 1) ? " - page " + page.currentPage : ""}`}>
     { page.data.map(article => <BlogArticlePreview {article}/> )}
 </SousPage>

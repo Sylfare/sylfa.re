@@ -54,6 +54,8 @@ export type i18nComplete = {
             backToList: string,
         },
         blog: {
+            title: string,
+            titlePage: string,
             seeMore: string,
             backToList: string,
         }
@@ -107,6 +109,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
                 backToList: "See other cool things",
             },
             blog: {
+                title: "Blog",
+                titlePage: " - page ",
                 seeMore: "See more",
                 backToList: "Back to articles"
             }
@@ -156,6 +160,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
                 backToList: "Voir d'autres trucs sympas",
             },
             blog: {
+                title: "Blog",
+                titlePage: " - page ",
                 seeMore: "Voir plus",
                 backToList: "Retour aux articles",
             }
