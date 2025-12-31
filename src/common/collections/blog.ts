@@ -8,10 +8,12 @@ export const blogList = async function({paginate}, blogListUnsorted, language: L
 }
 
 export const blogArticlePaths = async function (posts) {
-    return posts.map(post => ({
-        params: {id: post.id},
-        props: {post},
-    }));
+    return posts
+        .sort((a, b) => a.data.datePublication - b.data.datePublication)
+        .map(post => ({
+            params: {id: post.id},
+            props: {post},
+        }));
 }
 
 export const initBlog = async function(language: Language) {
