@@ -2,6 +2,7 @@
 import BlogArticlePreview from "@components/BlogArticlePreview.astro";
 import SousPage from "./SousPage.astro";
 import { useTranslations } from "../i18n/utils";
+import PreviousNext from "@components/PreviousNext.astro";
 
 const { page } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
@@ -10,4 +11,5 @@ const t = useTranslations(Astro.currentLocale);
 ---
 <SousPage title={`${t(a=>a.pages?.blog?.title)}${(page.currentPage > 1) ? " - page " + page.currentPage : ""}`}>
     { page.data.map(article => <BlogArticlePreview {article}/> )}
+    <PreviousNext {page} />
 </SousPage>
