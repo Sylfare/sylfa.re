@@ -16,10 +16,33 @@ export const blogArticlePaths = async function (posts) {
         }));
 }
 
+export const blogTagPaths = async function ({paginate}, posts, tagCount: {[tag: string]: number}, language: Language) {
+    const tags = [...new Set(posts.flatMap(post => posts.data.tags))];
+    const postsTries = posts
+        .sort((a, b) => a.data.datePublication - b.data.datePublication);
+    const postsByTag = tags.flatMap(tag => {
+        if(tag) {
+            const filteredPosts = postsTries.filter(post => post.data.tags?.includes(tag));
+            return paginate(filteredPosts, {
+                params: { tag },
+                props: { tagCount },
+                pageSize: 10,
+            });
+        } else {
+            return null;
+        }
+        
+    });
+    return postsByTag;
+}
+
+export const postsTagsCount = function(posts: {data: {tags?: any}}[], tags: string[]){
+    const tagCount = Object.fromEntries(tags.map(tag => [tag, 0]));
+}
+
 export const initBlog = async function(language: Language) {
     const posts = await getCollection(`blog-${language}`);
     const tags = [...new Set(posts.flatMap(truc => truc.data.tags))];
-    // const tagCount = trucsSympaTagsCount(posts, tags);
     const postCount = posts.length;
 
     return {
@@ -30,5 +53,3 @@ export const initBlog = async function(language: Language) {
     }
 }
 
-
-// j'arrive

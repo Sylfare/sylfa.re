@@ -15,17 +15,17 @@ export const trucsSympasTagPaths = async function ({paginate}, posts, tagCount: 
     const tags = [...new Set(posts.flatMap(truc => truc.data.tags))];
     const postsTries = posts
         .sort((a, b) => new Intl.Collator(language).compare(a.data.nom, b.data.nom));
-        const postsByTag = tags.flatMap(tag => {
-            if(tag) {
-                const filteredPosts = postsTries.filter(truc => truc.data.tags?.includes(tag));
-                return paginate(filteredPosts, {
-                    params: { tag },
-                    props: { tagCount },
-                    pageSize: 10
-                });
-            } else {
-                return null;
-            }
+    const postsByTag = tags.flatMap(tag => {
+        if(tag) {
+            const filteredPosts = postsTries.filter(truc => truc.data.tags?.includes(tag));
+            return paginate(filteredPosts, {
+                params: { tag },
+                props: { tagCount },
+                pageSize: 10,
+            });
+        } else {
+            return null;
+        }
     });
     return postsByTag;
 }

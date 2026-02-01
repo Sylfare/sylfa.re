@@ -3,16 +3,21 @@ import type { CollectionEntry } from "astro:content";
 import Section from "./Section.astro";
 import Navigation from "./Navigation.astro";
 import { useTranslations } from "../i18n/utils";
+import type { Language } from "../i18n/ui";
+
+const language = Astro.currentLocale as Language;
 type Props = {
-    article: CollectionEntry<'blog-fr'>
+    article: CollectionEntry<'blog-fr'> | CollectionEntry<'blog-en'>
 }
 const { article } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
 const mainPath = t(a=>a.navigation?.blogArticlePath);
+const tags = article.data.tags ?? [];
 
 ---
 
 <Section title={article.data.titre}>
+    <div>{tags.map(tag => <><a href={`${mainPath}/tags/${tag}`}>#{tag}</a> </>)}</div>
     {article.data.resume && <p>{article.data.resume}</p>}
     <Navigation href={`/${mainPath}/${article.id}`}>{t(a => a.pages?.blog?.seeMore)}</Navigation>
 </Section>
