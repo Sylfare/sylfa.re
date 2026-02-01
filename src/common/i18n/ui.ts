@@ -56,6 +56,7 @@ export type i18nComplete = {
         blog: {
             title: string,
             titlePage: string,
+            titleTag: string,
             seeMore: string,
             backToList: string,
         }
@@ -111,6 +112,7 @@ export const ui: {[_ in Language]: i18nKeys} = {
             blog: {
                 title: "Blog",
                 titlePage: " - page ",
+                titleTag: "Articles with tag ",
                 seeMore: "See more",
                 backToList: "Back to articles"
             }
@@ -162,6 +164,7 @@ export const ui: {[_ in Language]: i18nKeys} = {
             blog: {
                 title: "Blog",
                 titlePage: " - page ",
+                titleTag: "Articles avec le tag ",
                 seeMore: "Voir plus",
                 backToList: "Retour aux articles",
             }

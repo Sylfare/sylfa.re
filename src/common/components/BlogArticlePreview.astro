@@ -11,13 +11,14 @@ type Props = {
 }
 const { article } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
-const mainPath = t(a=>a.navigation?.blogArticlePath);
+const articlePath = t(a=>a.navigation?.blogArticlePath);
+const tagsPath = t(a=>a.navigation?.blogPath);
 const tags = article.data.tags ?? [];
 
 ---
 
 <Section title={article.data.titre}>
-    <div>{tags.map(tag => <><a href={`${mainPath}/tags/${tag}`}>#{tag}</a> </>)}</div>
+    <div>{tags.map(tag => <><a href={`/${tagsPath}/tags/${tag}`}>#{tag}</a> </>)}</div>
     {article.data.resume && <p>{article.data.resume}</p>}
-    <Navigation href={`/${mainPath}/${article.id}`}>{t(a => a.pages?.blog?.seeMore)}</Navigation>
+    <Navigation href={`/${articlePath}/${article.id}`}>{t(a => a.pages?.blog?.seeMore)}</Navigation>
 </Section>

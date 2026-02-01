@@ -7,14 +7,18 @@ import { useTranslations } from "../i18n/utils";
 import { render } from "astro:content";
 
 export type Props = {
-    post: CollectionEntry<'blog-fr'>
+    post: CollectionEntry<'blog-fr'> | CollectionEntry<('blog-en')>,
 };
 const {post} = Astro.props;
 const t = useTranslations(Astro.currentLocale);
+const path = t(a=>a.navigation?.blogPath);
 const {Content} = await render(post);
 
 ---
 <Page title={post.data.titre}>
+    <Section>
+        <div>{ post.data.tags?.map(tag => <><a href={`/${path}/tags/${tag}`}>#{tag}</a> </>) }</div>
+    </Section>
     <Section >
         <Content />
     </Section>
