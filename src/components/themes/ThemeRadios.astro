@@ -1,7 +1,7 @@
 ---
 import ThemeRadio from "@components/themes/ThemeRadio.astro";
-import { themesList } from "@css/themes/themes"
-import { useTranslations } from "src/common/i18n/utils";
+import { themesList } from "src/css/themes/themes"
+import { useTranslations } from "src/i18n/utils";
 const { selectedTheme } = Astro.props;
 
 const t = useTranslations(Astro.currentLocale);

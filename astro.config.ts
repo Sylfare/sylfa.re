@@ -1,13 +1,10 @@
 import { defineConfig, passthroughImageService } from "astro/config";
 import compressor from "astro-compressor";
 import { loadEnv } from "vite";
-import type { AstroUserConfig } from "astro";
-import type { DeepPartial } from "node_modules/astro/dist/type-utils";
 
 export const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
 
-// https://astro.build/config
-export const base = {
+export default defineConfig({
   vite: {
     build: {
       sourcemap: true,
@@ -20,8 +17,6 @@ export const base = {
     },
     css: {
       devSourcemap: true,
-      defineConfig: {
-      },
       preprocessorOptions: {
         less: {
         }
@@ -29,8 +24,8 @@ export const base = {
     },
   },
   build: {
-    assets: "assets",
-    assetsPrefix: env.ASSETS_BASE_URL
+    // assets: "assets",
+    // assetsPrefix: env.ASSETS_BASE_URL
   },
   image: {
     service: passthroughImageService(),
@@ -42,5 +37,6 @@ export const base = {
   integrations: [compressor()],
   i18n: {
     locales: ["en", "fr"],
+    defaultLocale: "fr"
   },
-} as DeepPartial<AstroUserConfig<any, any, any>>;
+} );

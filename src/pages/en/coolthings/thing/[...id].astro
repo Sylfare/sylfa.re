@@ -1,7 +1,7 @@
 ---
 import TrucSympaDetail from "@layouts/TrucSympaDetail.astro";
-import { initTrucsSympas } from "src/common/collections/trucssympas";
-import { useTranslations } from "src/common/i18n/utils";
+import { initTrucsSympas } from "src/collections/trucssympas";
+import { useTranslations } from "src/i18n/utils";
 
 export const trucs = await initTrucsSympas("en");
 export const getStaticPaths = trucs.staticPathsDetail;

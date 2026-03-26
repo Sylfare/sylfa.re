@@ -2,7 +2,7 @@
 import { render, type CollectionEntry } from "astro:content";
 
 import Section from '@components/Section.astro';
-import type { TrucSympa } from 'src/common/content.config';
+import type { TrucSympa } from 'src/content.config';
 import { useTranslations } from "../i18n/utils";
 const t = useTranslations(Astro.currentLocale);
 const mainPath = t(a=>a.navigation?.coolThingsPath);

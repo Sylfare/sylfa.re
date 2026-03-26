@@ -1,5 +1,5 @@
 ---
-import { env } from "../../../astro.config.shared";
+// import { env } from "../../../astro.config.shared";
 
 import { useTranslations } from "../i18n/utils";
 
@@ -7,8 +7,8 @@ const { links } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
 const targetLang = Astro.currentLocale === "fr" ? "en" : "fr";
 const targetDomain = {
-    "en": env.ENGLISH_BASE_URL,
-    "fr": env.FRENCH_BASE_URL,
+    "en": "wip",
+    "fr": "tec",
 }[targetLang] ?? "";
 
 const targetPath = links?.[targetLang]
