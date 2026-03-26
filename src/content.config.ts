@@ -1,13 +1,13 @@
-import { defineCollection, z } from "astro:content";
+
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
-import type { TupleType } from "typescript";
-import { i18n } from "astro:config/server";
 import { languages, type Language } from "./i18n/ui";
+import { z } from "astro/zod";
 
 const changelog = {
     name: "changelog",
     define: (language: Language) => defineCollection({
-        loader: glob({pattern: "**/*.md", base: `./src/${language}/changelog`}),
+        loader: glob({pattern: "**/*.md", base: `./src/changelog/${language}`}),
         schema: z.object({
             order: z.number(),
             name: z.string().optional(),
@@ -21,7 +21,7 @@ const changelog = {
 const trucSympa = {
     name: "trucsympa",
     define: (language: Language) => defineCollection({
-    loader: glob({pattern: "**/*.md", base: `./src/${language}/trucssympas`}),
+    loader: glob({pattern: "**/*.md", base: `./src/trucssympas/${language}`}),
         schema: z.object({
             nom: z.string(),
             description: z.string().optional(),

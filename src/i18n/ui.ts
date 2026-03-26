@@ -16,6 +16,7 @@ export type Language = keyof typeof languages;
 export type i18nComplete = {
     site: {
         title: string,
+        rootUrl: `/${Language}/`
     },
     settings: {
         open: string,
@@ -60,6 +61,7 @@ export const ui: {[_ in Language]: i18nKeys} = {
     en: {
         site: {
             title: "Sylfare's armoire",
+            rootUrl: "/en/",
         },
         settings: {
             open: 'Settings',
@@ -102,7 +104,8 @@ export const ui: {[_ in Language]: i18nKeys} = {
     },
     fr: {
         site: {
-            title: "Le bazar du Sylfare"
+            title: "Le bazar du Sylfare",
+            rootUrl: "/fr/",
         },
         settings: {
             open: 'Paramètres',

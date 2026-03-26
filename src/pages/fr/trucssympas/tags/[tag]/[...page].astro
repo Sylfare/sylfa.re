@@ -11,5 +11,6 @@ export const getStaticPaths = trucs.staticPathsTag;
 const { tag } = Astro.params;
 const { page, tagCount } = Astro.props;
 ---
-<TrucsSympas { tag } postCount={trucs.postCount} {tagCount} {page} trucs={page.data} path="/trucssympas">
+<TrucsSympas { tag } postCount={trucs.postCount} trucs={page.data} {tagCount} {page} path="trucssympas">
+    
 </TrucsSympas>

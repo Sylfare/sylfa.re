@@ -20,7 +20,7 @@ const trucPath = t(a=>a.navigation?.coolThingsDetailPath);
     <div>{ tags.map(tag => <><a href={`${path}/tags/${tag}`}>#{tag}</a> </>) }</div>
     <div>
         { liens.map(([nom, href]) => <><a {href} target="_blank">{nom}</a> </>) }
-        <a href={`${mainPath}/${trucPath}/${truc.id}`}>{t(a=>a.pages?.trucscools?.permalink)}</a>
+        <a href={`${t(a=>a.site?.rootUrl)}${mainPath}/${trucPath}/${truc.id}`}>{t(a=>a.pages?.trucscools?.permalink)}</a>
     </div>
     
     <Content />
