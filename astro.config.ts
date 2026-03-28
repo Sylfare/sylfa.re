@@ -5,6 +5,9 @@ import { loadEnv } from "vite";
 export const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
 
 export default defineConfig({
+  build: {
+    assets: "assets"
+  },
   image: {
     service: passthroughImageService(),
   },
@@ -13,6 +16,7 @@ export default defineConfig({
     contentIntellisense: true,
   },
   integrations: [compressor()],
+  
   i18n: {
     locales: ["en", "fr"],
     defaultLocale: "fr",
