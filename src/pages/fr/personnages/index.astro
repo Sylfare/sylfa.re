@@ -1,11 +1,12 @@
 ---
 import SousPage from "@layouts/SousPage.astro";
 import Section from "@components/Section.astro";
+import Navigation from "@components/Navigation.astro";
+
+import sylfare from "@img/personnages/persona/alors_glam_hama.png";
 ---
 <SousPage title="Mes personnages">
     <Section>
-        <ul>
-            <li><a href="persona/"><img class="pixel" src="/img/personnages/persona/alors_glam_hama.png" alt="" height="32"> Mon persona</a></li>
-        </ul>
+        <Navigation image={sylfare} href="personnages/persona" imageAlt="">Mon persona</Navigation>
     </Section>
 </Page>
