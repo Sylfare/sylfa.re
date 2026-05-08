@@ -3,17 +3,18 @@ import Section from "@components/Section.astro";
 import SousPage from "./SousPage.astro";
 import TrucSympa from "./TrucSympa.astro";
 import PreviousNext from "@components/PreviousNext.astro";
-import { useTranslations } from "../i18n/utils";
+import { initUrl, useTranslations } from "../i18n/utils";
 
 const { trucs, tag, tagCount, page, path, postCount, links } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
 const title = tag ? `${t(a=>a.pages?.trucscools?.showTag)} "${tag}"` : t(a=>a.pages?.trucscools?.showAllTags);
 const mainPath = t(a=>a.navigation?.coolThingsPath);
+const url = initUrl(Astro.currentLocale);
 ---
 <SousPage {title} {links}>
     {!tag && <p>{t(a=>a.pages?.trucscools?.funny)}</p>}
     <Section title={t(a=>a.pages?.trucscools?.tagSectionTitle)}>
-        <a href={`${t(a=>a.site?.rootUrl)}${mainPath}/`}>{t(a=>a.pages?.trucscools?.allTags)} ({postCount})</a>
+        <a href={url(mainPath)}>{t(a=>a.pages?.trucscools?.allTags)} ({postCount})</a>
         {Object.entries(tagCount).sort((a, b) => b[1] - a[1]).map(([tag, amount]) => <><a href={`${t(a=>a.site?.rootUrl)}${path}/tags/${tag}/`}>{tag} ({amount})</a> </>)}
     </Section>
     

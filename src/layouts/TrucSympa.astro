@@ -3,7 +3,7 @@ import { render, type CollectionEntry } from "astro:content";
 
 import Section from '@components/Section.astro';
 import type { TrucSympa } from 'src/content.config';
-import { useTranslations } from "../i18n/utils";
+import { initUrl, useTranslations } from "../i18n/utils";
 const t = useTranslations(Astro.currentLocale);
 const mainPath = t(a=>a.navigation?.coolThingsPath);
 
@@ -15,9 +15,10 @@ const { Content } = await render(truc);
 const liens = Object.entries(truc.data.liens ?? {});
 const tags = truc.data.tags ?? [];
 const trucPath = t(a=>a.navigation?.coolThingsDetailPath);
+const url = initUrl(Astro.currentLocale);
 ---
 <Section title={truc.data.nom} id={truc.id}>
-    <div>{ tags.map(tag => <><a href={`${path}/tags/${tag}`}>#{tag}</a> </>) }</div>
+    <div>{ tags.map((tag: string) => <><a href={url(`${path}/tags/${tag}`)}>#{tag}</a> </>) }</div>
     <div>
         { liens.map(([nom, href]) => <><a {href} target="_blank">{nom}</a> </>) }
         <a href={`${t(a=>a.site?.rootUrl)}${mainPath}/${trucPath}/${truc.id}`}>{t(a=>a.pages?.trucscools?.permalink)}</a>

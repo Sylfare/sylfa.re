@@ -2,7 +2,6 @@
 nom: uBlock Origin
 tags: ["extension navigateur", "pubs", "opensource", "youtube", "gratuit"]
 liens:
-    Site officiel: https://ublockorigin.com/
     Code source: https://github.com/gorhill/uBlock
     Firefox Add-Ons: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
     Chrome Web Store: https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
