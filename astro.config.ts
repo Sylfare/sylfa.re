@@ -6,7 +6,7 @@ export const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(),
 
 export default defineConfig({
   build: {
-    assets: "assets"
+    assets: "assets",
   },
   image: {
     service: passthroughImageService(),
