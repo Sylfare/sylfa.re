@@ -1,9 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import { initUrl } from "src/i18n/utils";
 
-const { href, image, imageAlt} = Astro.props;
+const { href, image, imageAlt, height} = Astro.props;
+
+const url = initUrl(Astro.currentLocale);
+
 ---
-<a {href} class={href ? "navigation" : "navigation disabled"}>{ image && <Image src={image} alt={imageAlt} />}{image && " "}<slot /></a>
+<a href={url(href)} class={href ? "navigation" : "navigation disabled"}>{ image && <Image src={image} alt={imageAlt} height="48"/>}{image && " "}<slot /></a>
 
 <style lang="less">
     @import (reference) "@css/themes.less";
@@ -21,6 +25,5 @@ const { href, image, imageAlt} = Astro.props;
                 text-shadow: 1px 1px 0 var(--button-highlight);
             }
         }
-        
     }
 </style>

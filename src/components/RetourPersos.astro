@@ -5,4 +5,4 @@ import { useTranslations } from "../i18n/utils";
 const t = useTranslations(Astro.currentLocale);
 ---
 
-<Navigation href={`${t(a=>a.site?.rootUrl)}personnages/`} image={personnages} imageAlt="">{t(a=>a.navigation?.backToCharacters)}</Navigation>
+<Navigation href="/personnages" image={personnages} imageAlt="">{t(a=>a.navigation?.backToCharacters)}</Navigation>
