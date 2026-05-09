@@ -1,20 +1,22 @@
 ---
 // import { env } from "../../../astro.config.shared";
 
-import { useTranslations } from "../i18n/utils";
+import { ui } from "src/i18n/ui";
+import { getLanguage, useTranslations } from "../i18n/utils";
 
 const { links } = Astro.props; 
 const t = useTranslations(Astro.currentLocale);
 const targetLang = Astro.currentLocale === "fr" ? "en" : "fr";
-const targetDomain = {
-    "en": "wip",
-    "fr": "tec",
-}[targetLang] ?? "";
+// const targetDomain = {
+//     "en": "wip",
+//     "fr": "tec",
+// }[targetLang] ?? "";
+const targetDomain = ui[targetLang].site?.rootUrl;
 
 const targetPath = links?.[targetLang]
 ---
 {targetPath &&
-<a id="switchLanguage" class="button-look" href={`${targetDomain}${targetPath}`}>
+<a id="switchLanguage" class="button-look" href={targetDomain}>
     <span>{t(a => a.navigation?.switchLanguage)}</span>
 </a>}
 
