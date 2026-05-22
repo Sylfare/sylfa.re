@@ -6,13 +6,12 @@ const { title } = Astro.props;
 import { useTranslations } from "../i18n/utils";
 import TrucSympa from "./TrucSympa.astro";
 const t = useTranslations(Astro.currentLocale);
-const mainPath = `${t(a=>a.site?.rootUrl)}${t(a=>a.navigation?.coolThingsPath)}`;
 const { truc } = Astro.props;
 ---
 <SousPage title={truc.data.nom}>
     <TrucSympa {truc}></TrucSympa>
 
-    <Navigation href={`${mainPath}`}>
+    <Navigation href={t(a=>a.navigation?.coolThingsPath)}>
         {t(a=>a.pages?.trucscools?.backToList)}
     </Navigation>
 </SousPage>
