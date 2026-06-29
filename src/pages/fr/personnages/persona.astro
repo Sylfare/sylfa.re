@@ -6,6 +6,8 @@ import GlamHama from "@img/personnages/persona/alors_glam_hama.png";
 import GlamDab from "@img/personnages/persona/alors_glam_dab.png";
 import GlamPikmin from "@img/personnages/persona/alors_glam_pikmin_pose.png";
 import GlamParle from "@img/personnages/persona/alors_glam_modele_stream.gif";
+import Frog from "@img/personnages/persona/alors_grenouille.png";
+import FrogAccroupi from "@img/personnages/persona/alors_grenouille_accroupi.png";
 
 import { Picture } from "astro:assets";
 ---
@@ -40,7 +42,7 @@ import { Picture } from "astro:assets";
     <h3>Style grenouille</h3>
     <p>croâ</p>
     <p>Un hoodie grenouille et une jupe quadrillée</p>
-    <img src="/img/personnages/persona/alors_grenouille.png" alt="Mon persona, vu·e de côté" />
-    <img src="/img/personnages/persona/alors_grenouille_accroupi.png" alt="Mon persona, accroupi·e" />
+    <Picture src={Frog} alt="Mon persona, vu·e de côté" />
+    <Picture src={FrogAccroupi} alt="Mon persona, accroupi·e" />
 </Section>
 </Personnage>

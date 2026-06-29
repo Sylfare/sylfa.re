@@ -15,7 +15,6 @@ export default defineConfig({
   experimental: {
     contentIntellisense: true,
   },
-  integrations: [compressor()],
   
   i18n: {
     locales: ["en", "fr"],
