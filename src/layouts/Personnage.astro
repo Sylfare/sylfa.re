@@ -1,0 +1,23 @@
+---
+import SousPage from "./SousPage.astro";
+import type { Language } from "src/i18n/ui";
+import Navigation from "@components/Navigation.astro";
+import { useTranslations } from "src/i18n/utils";
+import personnages from "@img/personnages.gif";
+
+const { title } = Astro.props;
+const localeUrls = {
+    fr: "personnages",
+    en: "characters",
+};
+
+const t = useTranslations(Astro.currentLocale);
+
+const localeUrl = localeUrls[Astro.currentLocale as Language ?? 'fr'];
+
+---
+
+<SousPage title={title}>
+    <slot />
+    <Navigation href={localeUrl} image={personnages} imageAlt="">{t(a=>a.navigation?.backToCharacters)}</Navigation>
+</SousPage>

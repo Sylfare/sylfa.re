@@ -1,0 +1,9 @@
+---
+import ThemeRadio from "@components/themes/ThemeRadio.astro";
+import { themesList } from "src/css/themes/themes"
+import { useTranslations } from "src/i18n/utils";
+const { selectedTheme } = Astro.props;
+
+const t = useTranslations(Astro.currentLocale);
+---
+{themesList.map((slug) => <ThemeRadio slug={slug} name={t((a) => a.settings?.themes?.[slug])} checked={ selectedTheme === slug } />)}

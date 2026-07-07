@@ -1,0 +1,48 @@
+---
+import Personnage from "@layouts/Personnage.astro";
+import Section from "@components/Section.astro";
+import GlamPokemon2g from "@img/personnages/persona/alors_glam_pokemon_2g_200.png";
+import GlamHama from "@img/personnages/persona/alors_glam_hama.png";
+import GlamDab from "@img/personnages/persona/alors_glam_dab.png";
+import GlamPikmin from "@img/personnages/persona/alors_glam_pikmin_pose.png";
+import GlamParle from "@img/personnages/persona/alors_glam_modele_stream.gif";
+import Frog from "@img/personnages/persona/alors_grenouille.png";
+import FrogAccroupi from "@img/personnages/persona/alors_grenouille_accroupi.png";
+
+import { Picture } from "astro:assets";
+---
+<Personnage title="Mon persona !">
+    <Section title="Présentation">
+    <p>C'est ellui qui me représente sur les Internets !!</p>
+    
+    <h3>Physique</h3>
+    <p>Le personnage a :</p>
+    <ul>
+        <li>les yeux gris</li>
+        <li>de très longs cheveux châtains qu'iel tresse</li>
+        <li>4 bras</li>
+    </ul>
+</Section>
+<Section title="Styles">
+    <p>Iel peut avoir plusieurs styles et vibes :</p>
+    <h3>Style classique</h3>
+    <img src="/img/personnages/persona/alors_dessins_papier.jpg" alt="Un dessin de mon persona dans des vêtements classiques" />
+    <p>Dans ce style, iel porte des vêtements habituels mais confortables : hoodie et jupe.</p>
+    
+    <h3>Style glam</h3>
+    <Picture src={GlamPokemon2g} alt="Mon persona dans le style des jeux Pokémon"/>
+    <Picture src={GlamHama} alt="Mon persona"/>
+    <Picture src={GlamDab} alt="Mon persona qui effectue le dab"/>
+    <Picture src={GlamPikmin} alt="Mon persona qui pose, allongé·e"/>
+    <Picture src={GlamParle} alt="Mon persona qui parle"/>
+    <p>Une forme qui brille !! Avec des vêtements roses bonbon et jaunes, des cheveux blancs, et surtout plein de paillettes !<p>
+    <p>Pour l'instant c'est le style que je préfère le plus.</p>
+    
+    
+    <h3>Style grenouille</h3>
+    <p>croâ</p>
+    <p>Un hoodie grenouille et une jupe quadrillée</p>
+    <Picture src={Frog} alt="Mon persona, vu·e de côté" />
+    <Picture src={FrogAccroupi} alt="Mon persona, accroupi·e" />
+</Section>
+</Personnage>
